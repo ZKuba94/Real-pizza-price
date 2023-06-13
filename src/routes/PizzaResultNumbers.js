@@ -1,6 +1,6 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 
-function PizzaResultNumbers({ actPizzaSize, actPizzaMeasure, actPizzaCurrency}) {
+function PizzaResultNumbers({actPizzaSize, actPizzaMeasure, actPizzaCurrency}) {
 
     return (
         <Container className='PizzaResultNumbers'>

@@ -10,8 +10,7 @@ function Inputs({
                     actPizzaCurrency,
                     onPizzaCurrencyChange
                 }) {
-    // const pizzaNumbers =
-
+    const items = ['Pizza 1', 'Pizza 2']
     return (
         <Container className='Inputs'>
             <Row>
@@ -29,28 +28,20 @@ function Inputs({
                         </ListGroupItem>
                     </ListGroup>
                 </Col>
-                <Col>
-                    <PizzaToCompare
-                        // counter={item.id}
-                        measures={measures}
-                        currencies={currencies}
-                        actPizzaMeasure={actPizzaMeasure}
-                        onPizzaMeasureChange={onPizzaMeasureChange}
-                        actPizzaCurrency={actPizzaCurrency}
-                        onPizzaCurrencyChange={onPizzaCurrencyChange}
-                    />
-                </Col>
-                <Col>
-                    <PizzaToCompare
-                        // counter={item.id}
-                        measures={measures}
-                        currencies={currencies}
-                        actPizzaMeasure={actPizzaMeasure}
-                        onPizzaMeasureChange={onPizzaMeasureChange}
-                        actPizzaCurrency={actPizzaCurrency}
-                        onPizzaCurrencyChange={onPizzaCurrencyChange}
-                    />
-                </Col>
+                {items.map((item, index) => (
+                    <Col>
+                        <PizzaToCompare
+                            key={index}
+                            item={item}
+                            measures={measures}
+                            currencies={currencies}
+                            actPizzaMeasure={actPizzaMeasure}
+                            onPizzaMeasureChange={onPizzaMeasureChange}
+                            actPizzaCurrency={actPizzaCurrency}
+                            onPizzaCurrencyChange={onPizzaCurrencyChange}
+                        />
+                    </Col>
+                ))}
                 <Col>
                     <AddPizzaButton/>
                 </Col>

@@ -1,7 +1,7 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import {useState} from "react";
 
-function PizzaToCompare({
+function PizzaToCompare({   item,
                             measures,
                             currencies,
                             actPizzaMeasure,
@@ -12,7 +12,6 @@ function PizzaToCompare({
     const [pizzaSize, setPizzaSize] = useState(30)
     const [pizzaQuantity, setQuantityChange] = useState(2)
     const [pizzaPrice, setPizzaPriceChange] = useState(45)
-
     const measurements = measures.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
     )
@@ -23,7 +22,7 @@ function PizzaToCompare({
         <Container className='PizzaToCompare'>
             <ListGroup>
                 <ListGroupItem>
-                    Pizza 1
+                    {item}
                     <Form>
                         <ListGroupItem>
                             <Form.Group as={Row}>
@@ -67,33 +66,33 @@ function PizzaToCompare({
                                 </Col>
                             </Form.Group>
                         </ListGroupItem>
-                <ListGroupItem>
-                    <Form.Group as={Row}>
-                        <Col>
-                            <Form.Control
-                                name='pizzas price'
-                                type='number'
-                                value={pizzaPrice}
-                                onChange={(e) => {
-                                    setPizzaPriceChange(e.target.value)
-                                }
-                                }
-                            />
-                        </Col>
-                        <Col>
-                            <Form.Select
-                                name='currency'
-                                value={actPizzaCurrency}
-                                onChange={(e) => {
-                                    onPizzaCurrencyChange(e.target.value)
-                                }
-                                }
-                            >
-                                {currency}
-                            </Form.Select>
-                        </Col>
-                    </Form.Group>
-                </ListGroupItem>
+                        <ListGroupItem>
+                            <Form.Group as={Row}>
+                                <Col>
+                                    <Form.Control
+                                        name='pizzas price'
+                                        type='number'
+                                        value={pizzaPrice}
+                                        onChange={(e) => {
+                                            setPizzaPriceChange(e.target.value)
+                                        }
+                                        }
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Select
+                                        name='currency'
+                                        value={actPizzaCurrency}
+                                        onChange={(e) => {
+                                            onPizzaCurrencyChange(e.target.value)
+                                        }
+                                        }
+                                    >
+                                        {currency}
+                                    </Form.Select>
+                                </Col>
+                            </Form.Group>
+                        </ListGroupItem>
                     </Form>
                 </ListGroupItem>
             </ListGroup>
