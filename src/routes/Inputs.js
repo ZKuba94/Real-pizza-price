@@ -5,14 +5,8 @@ import AddPizzaButton from "./AddPizzaButton"
 function Inputs({
                     measures,
                     currencies,
-                    actPizzaSize,
-                    onPizzaSizeChange,
                     actPizzaMeasure,
                     onPizzaMeasureChange,
-                    actPizzaQuantity,
-                    onQuantityChange,
-                    actPizzaPrice,
-                    onPizzaPriceChange,
                     actPizzaCurrency,
                     onPizzaCurrencyChange
                 }) {
@@ -40,14 +34,8 @@ function Inputs({
                         // counter={item.id}
                         measures={measures}
                         currencies={currencies}
-                        actPizzaSize={actPizzaSize}
-                        onPizzaSizeChange={onPizzaSizeChange}
                         actPizzaMeasure={actPizzaMeasure}
                         onPizzaMeasureChange={onPizzaMeasureChange}
-                        actPizzaQuantity={actPizzaQuantity}
-                        onQuantityChange={onQuantityChange}
-                        actPizzaPrice={actPizzaPrice}
-                        onPizzaPriceChange={onPizzaPriceChange}
                         actPizzaCurrency={actPizzaCurrency}
                         onPizzaCurrencyChange={onPizzaCurrencyChange}
                     />
@@ -57,14 +45,8 @@ function Inputs({
                         // counter={item.id}
                         measures={measures}
                         currencies={currencies}
-                        actPizzaSize={actPizzaSize}
-                        onPizzaSizeChange={onPizzaSizeChange}
                         actPizzaMeasure={actPizzaMeasure}
                         onPizzaMeasureChange={onPizzaMeasureChange}
-                        actPizzaQuantity={actPizzaQuantity}
-                        onQuantityChange={onQuantityChange}
-                        actPizzaPrice={actPizzaPrice}
-                        onPizzaPriceChange={onPizzaPriceChange}
                         actPizzaCurrency={actPizzaCurrency}
                         onPizzaCurrencyChange={onPizzaCurrencyChange}
                     />

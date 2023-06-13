@@ -1,12 +1,9 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 
-function PizzaResultsNumbers({measures, currencies, actPizzaSize, actPizzaMeasure, actPizzaCurrency}) {
-    const measurements = measures.map(measure =>
-        <option key={measure} value={measure}>{measure}</option>
-    )
+function PizzaResultNumbers({ actPizzaSize, actPizzaMeasure, actPizzaCurrency}) {
 
     return (
-        <Container className='PizzaResultsNumbers'>
+        <Container className='PizzaResultNumbers'>
             <ListGroup>
                 <Row>
                     <Form>
@@ -51,4 +48,4 @@ function PizzaResultsNumbers({measures, currencies, actPizzaSize, actPizzaMeasur
     )
 }
 
-export default PizzaResultsNumbers;
+export default PizzaResultNumbers;

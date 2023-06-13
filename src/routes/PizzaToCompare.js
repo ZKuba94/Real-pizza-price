@@ -1,19 +1,18 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
+import {useState} from "react";
 
 function PizzaToCompare({
                             measures,
                             currencies,
-                            actPizzaSize,
-                            onPizzaSizeChange,
                             actPizzaMeasure,
                             onPizzaMeasureChange,
-                            actPizzaQuantity,
-                            onQuantityChange,
-                            actPizzaPrice,
-                            onPizzaPriceChange,
                             actPizzaCurrency,
                             onPizzaCurrencyChange,
                         }) {
+    const [pizzaSize, setPizzaSize] = useState(30)
+    const [pizzaQuantity, setQuantityChange] = useState(2)
+    const [pizzaPrice, setPizzaPriceChange] = useState(45)
+
     const measurements = measures.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
     )
@@ -32,9 +31,9 @@ function PizzaToCompare({
                                     <Form.Control
                                         name='pizza size'
                                         type='number'
-                                        value={actPizzaSize}
+                                        value={pizzaSize}
                                         onChange={(e) => {
-                                            onPizzaSizeChange(e.target.value)
+                                            setPizzaSize(e.target.value)
                                         }
                                         }
                                     />
@@ -59,9 +58,9 @@ function PizzaToCompare({
                                     <Form.Control
                                         name='pizza quantity'
                                         type='number'
-                                        value={actPizzaQuantity}
+                                        value={pizzaQuantity}
                                         onChange={e => {
-                                            onQuantityChange(e.target.value)
+                                            setQuantityChange(e.target.value)
                                         }
                                         }
                                     />
@@ -74,9 +73,9 @@ function PizzaToCompare({
                             <Form.Control
                                 name='pizzas price'
                                 type='number'
-                                value={actPizzaPrice}
+                                value={pizzaPrice}
                                 onChange={(e) => {
-                                    onPizzaPriceChange(e.target.value)
+                                    setPizzaPriceChange(e.target.value)
                                 }
                                 }
                             />
