@@ -1,17 +1,21 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
-import {useState} from "react";
+import React from "react";
 
-function PizzaToCompare({   item,
+function PizzaToCompare({
+                            item,
                             measures,
                             currencies,
                             actPizzaMeasure,
                             onPizzaMeasureChange,
                             actPizzaCurrency,
                             onPizzaCurrencyChange,
+                            pizzaSize,
+                            onPizzaSizeChange,
+                            pizzaQuantity,
+                            onPizzaQuantityChange,
+                            pizzaPrice,
+                            onPizzaPriceChange
                         }) {
-    const [pizzaSize, setPizzaSize] = useState(30)
-    const [pizzaQuantity, setQuantityChange] = useState(2)
-    const [pizzaPrice, setPizzaPriceChange] = useState(45)
     const measurements = measures.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
     )
@@ -28,11 +32,11 @@ function PizzaToCompare({   item,
                             <Form.Group as={Row}>
                                 <Col>
                                     <Form.Control
-                                        name='pizza size'
+                                        name='pizzaSize'
                                         type='number'
                                         value={pizzaSize}
                                         onChange={(e) => {
-                                            setPizzaSize(e.target.value)
+                                            onPizzaSizeChange(parseFloat(e.target.value))
                                         }
                                         }
                                     />
@@ -59,7 +63,7 @@ function PizzaToCompare({   item,
                                         type='number'
                                         value={pizzaQuantity}
                                         onChange={e => {
-                                            setQuantityChange(e.target.value)
+                                            onPizzaQuantityChange(parseFloat(e.target.value))
                                         }
                                         }
                                     />
@@ -74,7 +78,7 @@ function PizzaToCompare({   item,
                                         type='number'
                                         value={pizzaPrice}
                                         onChange={(e) => {
-                                            setPizzaPriceChange(e.target.value)
+                                            onPizzaPriceChange(parseFloat(e.target.value))
                                         }
                                         }
                                     />

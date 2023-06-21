@@ -1,6 +1,7 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
+import React from "react";
 
-function PizzaResultNumbers({actPizzaSize, actPizzaMeasure, actPizzaCurrency}) {
+function PizzaResultNumbers({pizzaSize, actPizzaMeasure, actPizzaCurrency}) {
 
     return (
         <Container className='PizzaResultNumbers'>
@@ -13,7 +14,7 @@ function PizzaResultNumbers({actPizzaSize, actPizzaMeasure, actPizzaCurrency}) {
                                     <Form.Control
                                         name='area result'
                                         type='number'
-                                        // value={countedPrice}
+                                        value={3.14 * (parseFloat(pizzaSize) / 2)}
                                         readOnly
                                     />
                                 </Col>
