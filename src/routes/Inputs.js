@@ -3,23 +3,19 @@ import PizzaToCompare from "./PizzaToCompare"
 import AddPizzaButton from "./AddPizzaButton"
 
 function Inputs({
-                    items,
+                    headings,
                     measures,
                     currencies,
                     actPizzaMeasure,
                     onPizzaMeasureChange,
                     actPizzaCurrency,
                     onPizzaCurrencyChange,
-                    // pizzaSize,
-                    // onPizzaSizeChange,
-                    pizza1Size,
-                    onPizza1SizeChange,
-                    pizza2Size,
-                    onPizza2SizeChange,
-                    pizzaQuantity,
-                    onPizzaQuantityChange,
-                    pizzaPrice,
-                    onPizzaPriceChange
+                    pizzaSizesObj,
+                    onPizzaSizesChange,
+                    pizzaQuantities,
+                    onPizzaQuantitiesChange,
+                    pizzaPrices,
+                    onPizzaPricesChange,
                 }) {
     return (
         <Container className='Inputs'>
@@ -38,44 +34,29 @@ function Inputs({
                         </ListGroupItem>
                     </ListGroup>
                 </Col>
-                {/*{items.map((item, index) => (*/}
-                <Col>
-                    <PizzaToCompare
-                        // key={index}
-                        // item={item}
-                        item={'Pizza 1'}
-                        measures={measures}
-                        currencies={currencies}
-                        actPizzaMeasure={actPizzaMeasure}
-                        onPizzaMeasureChange={onPizzaMeasureChange}
-                        actPizzaCurrency={actPizzaCurrency}
-                        onPizzaCurrencyChange={onPizzaCurrencyChange}
-                        pizzaSize={pizza1Size}
-                        onPizzaSizeChange={onPizza1SizeChange}
-                        pizzaQuantity={pizzaQuantity}
-                        onPizzaQuantityChange={onPizzaQuantityChange}
-                        pizzaPrice={pizzaPrice}
-                        onPizzaPriceChange={onPizzaPriceChange}
-                    />
-                </Col>
-                <Col>
-                    <PizzaToCompare
-                        item={'Pizza 2'}
-                        measures={measures}
-                        currencies={currencies}
-                        actPizzaMeasure={actPizzaMeasure}
-                        onPizzaMeasureChange={onPizzaMeasureChange}
-                        actPizzaCurrency={actPizzaCurrency}
-                        onPizzaCurrencyChange={onPizzaCurrencyChange}
-                        pizzaSize={pizza2Size}
-                        onPizzaSizeChange={onPizza2SizeChange}
-                        pizzaQuantity={pizzaQuantity}
-                        onPizzaQuantityChange={onPizzaQuantityChange}
-                        pizzaPrice={pizzaPrice}
-                        onPizzaPriceChange={onPizzaPriceChange}
-                    />
-                </Col>
-                {/*))}*/}
+                {headings.map((item, index) => (
+                    <Col>
+                        <PizzaToCompare
+                            id={index}
+                            heading={item}
+                            pizzaSizesObj={pizzaSizesObj}
+                            pizzaSize={pizzaSizesObj[index].value}
+                            onPizzaSizesChange={onPizzaSizesChange}
+                            pizzaQuantitiesObj={pizzaQuantities}
+                            pizzaQuantities={pizzaQuantities[index].value}
+                            onPizzaQuantitiesChange={onPizzaQuantitiesChange}
+                            measures={measures}
+                            currencies={currencies}
+                            actPizzaMeasure={actPizzaMeasure}
+                            onPizzaMeasureChange={onPizzaMeasureChange}
+                            actPizzaCurrency={actPizzaCurrency}
+                            onPizzaCurrencyChange={onPizzaCurrencyChange}
+                            pizzaPrice={pizzaPrices[index].value}
+                            pizzaPrices={pizzaPrices}
+                            onPizzaPricesChange={onPizzaPricesChange}
+                        />
+                    </Col>
+                ))}
                 <Col>
                     <AddPizzaButton/>
                 </Col>

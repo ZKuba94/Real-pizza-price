@@ -9,48 +9,44 @@ import {Container, ProgressBar} from "react-bootstrap";
 function App() {
     const measurements = ['cm', 'm', 'in', 'ft'];
     const currencies = ['PLN', 'USD', 'EUR']
+    const pizzas = ['Pizza 1', 'Pizza 2']
     const [pizzaMeasure, setPizzaMeasure] = useState(measurements[0])
     const [actPizzaCurrency, setPizzaCurrencyChange] = useState(currencies[0])
-    const pizzas = ['Pizza1', 'Pizza2']
-    // const items2 = {
-    //     size: 'pizzaSize'+pizzas[0],
-    //     quantity: 'pizzaQuantity'+pizzas[0],
-    //     price: 'pizzaPrice'+pizzas[0],
-    //     sizeChange: 'setPizzaSize'+pizzas[0],
-    //     quantityChange: 'setQuantity'+pizzas[0],
-    //     priceChange: 'setPrice'+pizzas[0],
-    // }
-    const [pizza1Size, setPizza1Size] = useState(25)
-    const [pizza2Size, setPizza2Size] = useState(35)
-    const [pizzaQuantity, setQuantityChange] = useState(2)
-    const [pizzaPrice, setPizzaPriceChange] = useState(45)
-
+    const [pizzaSizes, setPizzaSizes] = useState([
+        {id:0, value:10},
+        {id:1, value:20},
+    ])
+    const [pizzaQuantities, setQuantitiesChange] = useState([
+        {id: 0, value: 2},
+        {id: 1, value: 2},
+    ])
+    const [pizzaPrices,setPizzaPrices] = useState([
+        {id: 0, value: 50},
+        {id: 1, value: 70},
+    ])
     return (
         <div className="App">
             <Header/>
             <Inputs
-                items={pizzas}
+                headings={pizzas}
                 measures={measurements}
                 currencies={currencies}
                 actPizzaMeasure={pizzaMeasure}
                 onPizzaMeasureChange={setPizzaMeasure}
                 actPizzaCurrency={actPizzaCurrency}
                 onPizzaCurrencyChange={setPizzaCurrencyChange}
-                pizza1Size={pizza1Size}
-                onPizza1SizeChange={setPizza1Size}
-                pizza2Size={pizza2Size}
-                onPizza2SizeChange={setPizza2Size}
-                pizzaQuantity={pizzaQuantity}
-                onPizzaQuantityChange={setQuantityChange}
-                pizzaPrice={pizzaPrice}
-                onPizzaPriceChange={setPizzaPriceChange}
+                pizzaSizesObj={pizzaSizes}
+                onPizzaSizesChange={setPizzaSizes}
+                pizzaQuantities={pizzaQuantities}
+                onPizzaQuantitiesChange={setQuantitiesChange}
+                pizzaPrices={pizzaPrices}
+                onPizzaPricesChange={setPizzaPrices}
             />
             <Container className='my-4'>
                 <ProgressBar striped variant="primary" now={100} className='w-100'/>
             </Container>
                 <Results
-                    pizza1Size={pizza1Size}
-                    pizza2Size={pizza2Size}
+                    pizzas={pizzas}
                     actPizzaMeasure={pizzaMeasure}
                     actPizzaCurrency={actPizzaCurrency}
                 />

@@ -2,19 +2,23 @@ import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstr
 import React from "react";
 
 function PizzaToCompare({
-                            item,
+                            id,
+                            heading,
                             measures,
                             currencies,
                             actPizzaMeasure,
                             onPizzaMeasureChange,
                             actPizzaCurrency,
                             onPizzaCurrencyChange,
+                            pizzaSizesObj,
                             pizzaSize,
-                            onPizzaSizeChange,
-                            pizzaQuantity,
-                            onPizzaQuantityChange,
+                            onPizzaSizesChange,
+                            pizzaQuantitiesObj,
+                            pizzaQuantities,
+                            onPizzaQuantitiesChange,
                             pizzaPrice,
-                            onPizzaPriceChange
+                            pizzaPrices,
+                            onPizzaPricesChange
                         }) {
     const measurements = measures.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
@@ -22,11 +26,17 @@ function PizzaToCompare({
     const currency = currencies.map(curr =>
         <option key={curr} value={curr}>{curr}</option>
     )
+    const handleInputsChanges = (key,obj,clbFunct) => (e => {
+        const updatedData = obj.map((item)=>
+        item.id === key ? {...item, value: parseFloat(e.target.value)}: item
+        )
+        clbFunct(updatedData)
+    })
     return (
         <Container className='PizzaToCompare'>
             <ListGroup>
                 <ListGroupItem>
-                    {item}
+                    {heading}
                     <Form>
                         <ListGroupItem>
                             <Form.Group as={Row}>
@@ -35,10 +45,7 @@ function PizzaToCompare({
                                         name='pizzaSize'
                                         type='number'
                                         value={pizzaSize}
-                                        onChange={(e) => {
-                                            onPizzaSizeChange(parseFloat(e.target.value))
-                                        }
-                                        }
+                                        onChange={handleInputsChanges(id,pizzaSizesObj,onPizzaSizesChange)}
                                     />
                                 </Col>
                                 <Col>
@@ -61,11 +68,8 @@ function PizzaToCompare({
                                     <Form.Control
                                         name='pizza quantity'
                                         type='number'
-                                        value={pizzaQuantity}
-                                        onChange={e => {
-                                            onPizzaQuantityChange(parseFloat(e.target.value))
-                                        }
-                                        }
+                                        value={pizzaQuantities}
+                                        onChange={handleInputsChanges(id,pizzaQuantitiesObj,onPizzaQuantitiesChange)}
                                     />
                                 </Col>
                             </Form.Group>
@@ -77,10 +81,7 @@ function PizzaToCompare({
                                         name='pizzas price'
                                         type='number'
                                         value={pizzaPrice}
-                                        onChange={(e) => {
-                                            onPizzaPriceChange(parseFloat(e.target.value))
-                                        }
-                                        }
+                                        onChange={handleInputsChanges(id,pizzaPrices,onPizzaPricesChange)}
                                     />
                                 </Col>
                                 <Col>
