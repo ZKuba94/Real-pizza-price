@@ -2,7 +2,14 @@ import {Col, Container, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import PizzaResultNumbers from "./PizzaResultNumbers"
 import AddPizzaButton from "./AddPizzaButton";
 
-function Results({pizzas,actPizzaMeasure, actPizzaCurrency}) {
+function Results({
+                     headings,
+                     actPizzaMeasure,
+                     actPizzaCurrency,
+                     pizzaSizesObj,
+                     pizzaQuantities,
+                     pizzaPrices,
+                 }) {
 
     return (
         <Container className='Results'>
@@ -17,14 +24,14 @@ function Results({pizzas,actPizzaMeasure, actPizzaCurrency}) {
                         </ListGroupItem>
                     </ListGroup>
                 </Col>
-                {pizzas.map((item, index) => (
+                {headings.map((item, index) => (
                     <Col>
                         <PizzaResultNumbers
-                            // pizzaSize={pizza1Size}
-                            id={index}
-                            item={item}
                             actPizzaMeasure={actPizzaMeasure}
                             actPizzaCurrency={actPizzaCurrency}
+                            pizzaSize={pizzaSizesObj[index].value}
+                            pizzaQuantity={pizzaQuantities[index].value}
+                            pizzaPrice={pizzaPrices[index].value}
                         />
                     </Col>
                 ))}

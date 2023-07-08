@@ -46,9 +46,13 @@ function App() {
                 <ProgressBar striped variant="primary" now={100} className='w-100'/>
             </Container>
                 <Results
-                    pizzas={pizzas}
+                    // pi={pi}
+                    headings={pizzas}
                     actPizzaMeasure={pizzaMeasure}
                     actPizzaCurrency={actPizzaCurrency}
+                    pizzaSizesObj={pizzaSizes}
+                    pizzaQuantities={pizzaQuantities}
+                    pizzaPrices={pizzaPrices}
                 />
             <Container className='my-4'>
                 <ProgressBar striped variant="primary" now={100} className='w-100'/>
