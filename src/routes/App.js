@@ -5,6 +5,7 @@ import Inputs from "./Inputs";
 import Results from "./Results"
 import {useState} from "react";
 import {Container, ProgressBar} from "react-bootstrap";
+import ResultText from "./ResultText";
 
 function App() {
     const measurements = ['cm', 'm', 'in', 'ft'];
@@ -13,16 +14,20 @@ function App() {
     const [pizzaMeasure, setPizzaMeasure] = useState(measurements[0])
     const [actPizzaCurrency, setPizzaCurrencyChange] = useState(currencies[0])
     const [pizzaSizes, setPizzaSizes] = useState([
-        {id:0, value:10},
-        {id:1, value:20},
+        {id: 0, value: 10},
+        {id: 1, value: 20},
     ])
     const [pizzaQuantities, setQuantitiesChange] = useState([
         {id: 0, value: 2},
         {id: 1, value: 2},
     ])
-    const [pizzaPrices,setPizzaPrices] = useState([
+    const [pizzaPrices, setPizzaPrices] = useState([
         {id: 0, value: 50},
         {id: 1, value: 70},
+    ])
+    const [pizzaCompare, setPizzaCompare] = useState([
+        {id: 0, value: 0},
+        {id: 1, value: 0},
     ])
     return (
         <div className="App">
@@ -45,18 +50,23 @@ function App() {
             <Container className='my-4'>
                 <ProgressBar striped variant="primary" now={100} className='w-100'/>
             </Container>
-                <Results
-                    // pi={pi}
-                    headings={pizzas}
-                    actPizzaMeasure={pizzaMeasure}
-                    actPizzaCurrency={actPizzaCurrency}
-                    pizzaSizesObj={pizzaSizes}
-                    pizzaQuantities={pizzaQuantities}
-                    pizzaPrices={pizzaPrices}
-                />
+            <Results
+                headings={pizzas}
+                actPizzaMeasure={pizzaMeasure}
+                actPizzaCurrency={actPizzaCurrency}
+                pizzaSizesObj={pizzaSizes}
+                pizzaQuantities={pizzaQuantities}
+                pizzaPrices={pizzaPrices}
+                pizzaCompare={pizzaCompare}
+                onPizzaCompareChange={setPizzaCompare}
+            />
             <Container className='my-4'>
                 <ProgressBar striped variant="primary" now={100} className='w-100'/>
             </Container>
+            <ResultText
+                headings={pizzas}
+                pizzaCompare={pizzaCompare}
+            />
         </div>
     );
 }

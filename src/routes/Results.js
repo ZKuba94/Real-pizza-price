@@ -9,6 +9,8 @@ function Results({
                      pizzaSizesObj,
                      pizzaQuantities,
                      pizzaPrices,
+                     pizzaCompare,
+                     onPizzaCompareChange,
                  }) {
 
     return (
@@ -27,11 +29,15 @@ function Results({
                 {headings.map((item, index) => (
                     <Col>
                         <PizzaResultNumbers
+                            index={index}
                             actPizzaMeasure={actPizzaMeasure}
                             actPizzaCurrency={actPizzaCurrency}
                             pizzaSize={pizzaSizesObj[index].value}
                             pizzaQuantity={pizzaQuantities[index].value}
                             pizzaPrice={pizzaPrices[index].value}
+                            // pizzaCompare={pizzaCompare[index].value}
+                            pizzaCompareObj={pizzaCompare}
+                            onPizzaCompareChange={onPizzaCompareChange}
                         />
                     </Col>
                 ))}

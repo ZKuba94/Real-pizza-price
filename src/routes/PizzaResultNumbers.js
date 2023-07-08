@@ -2,14 +2,25 @@ import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstr
 import React from "react";
 
 function PizzaResultNumbers({
+                                index,
                                 actPizzaMeasure,
                                 actPizzaCurrency,
                                 pizzaSize,
                                 pizzaQuantity,
                                 pizzaPrice,
+                                pizzaCompareObj,
+                                onPizzaCompareChange,
                             }) {
     const r = pizzaSize / 2
     const areaOfPizza = ((Math.PI * (r ** 2)).toFixed(2)) * pizzaQuantity
+    const handleInputChange = (key, obj, clbFunct) => (e => {
+        const updatedData = obj.map((item) =>
+            item.id === key ? {...item, value: e.target.value} : item
+        )
+        clbFunct(updatedData)
+        console.log(updatedData)
+    })
+
     return (
         <Container className='PizzaResultNumbers'>
             <ListGroup>
@@ -22,7 +33,7 @@ function PizzaResultNumbers({
                                         name='area result'
                                         type='number'
                                         value={areaOfPizza}
-                                        readOnly
+                                        disabled
                                     />
                                 </Col>
                                 <Col>
@@ -38,8 +49,11 @@ function PizzaResultNumbers({
                                     <Form.Control
                                         name='total pizza price'
                                         type='number'
+                                        // disabled
                                         readOnly
                                         value={(pizzaPrice / areaOfPizza).toFixed(4)}
+                                        onFocus={handleInputChange(index,pizzaCompareObj,onPizzaCompareChange)}
+
                                     />
                                 </Col>
                                 <Col>
