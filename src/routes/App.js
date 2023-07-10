@@ -81,6 +81,9 @@ function App() {
             <ResultText
                 headings={pizzas}
                 pizzaCompare={pizzaCompare}
+                pizzaPrices={pizzaPrices}
+                pizzaSizes={pizzaSizes}
+                pizzaQuantities={pizzaQuantities}
             />
         </div>
     );
