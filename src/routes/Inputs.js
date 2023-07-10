@@ -16,9 +16,13 @@ function Inputs({
                     onPizzaQuantitiesChange,
                     pizzaPrices,
                     onPizzaPricesChange,
+                    pizzaCompare,
+                    onPizzaCompareChange,
                 }) {
     return (
-        <Container className='Inputs'>
+        <Container
+            className='Inputs'
+        >
             <Row>
                 <Col>
                     <ListGroup>
@@ -54,6 +58,8 @@ function Inputs({
                             pizzaPrice={pizzaPrices[index].value}
                             pizzaPrices={pizzaPrices}
                             onPizzaPricesChange={onPizzaPricesChange}
+                            pizzaCompare={pizzaCompare}
+                            onPizzaCompareChange={onPizzaCompareChange}
                         />
                     </Col>
                 ))}

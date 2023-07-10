@@ -2,18 +2,21 @@ import {Container} from "react-bootstrap";
 import React from "react";
 
 function ResultText({
-                                headings,
-    pizzaCompare,
-                                actPizzaMeasure,
-                                actPizzaCurrency,
-                                pizzaSize,
-                                pizzaQuantity,
-                                pizzaPrice,
-                            }) {
-
+                        headings,
+                        pizzaCompare,
+                    }) {
+    const betterOption = pizzaCompare[0].value < pizzaCompare[1].value ? 0 : 1
     return (
-        <Container className='ResultText'>
-            More profitable is "{headings[0]}". Its 1cm<sup>2</sup> cost "{((pizzaCompare[0].value)*100).toFixed(2)}" cents.
+        <Container
+            className='ResultText'
+        >
+            <p>
+                {pizzaCompare[0].value === pizzaCompare[1].value ?
+                    `Both pizzas are equally profitable. For 1cm of it you will pay: ${((pizzaCompare[betterOption].value) * 100).toFixed(2)} cents. `
+                    : `More profitable is ${headings[betterOption]}. Its 1cm cost
+                    ${((pizzaCompare[betterOption].value) * 100).toFixed(2)}
+                    cents.`}
+            </p>
         </Container>
     )
 }

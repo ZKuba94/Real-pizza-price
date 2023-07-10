@@ -46,9 +46,17 @@ function App() {
                 onPizzaQuantitiesChange={setQuantitiesChange}
                 pizzaPrices={pizzaPrices}
                 onPizzaPricesChange={setPizzaPrices}
+                pizzaCompare={pizzaCompare}
+                onPizzaCompareChange={setPizzaCompare}
             />
-            <Container className='my-4'>
-                <ProgressBar striped variant="primary" now={100} className='w-100'/>
+            <Container
+                className='my-4'
+            >
+                <ProgressBar
+                    striped
+                    variant="primary"
+                    now={100}
+                    className='w-100'/>
             </Container>
             <Results
                 headings={pizzas}
@@ -60,8 +68,15 @@ function App() {
                 pizzaCompare={pizzaCompare}
                 onPizzaCompareChange={setPizzaCompare}
             />
-            <Container className='my-4'>
-                <ProgressBar striped variant="primary" now={100} className='w-100'/>
+            <Container
+                className='my-4'
+            >
+                <ProgressBar
+                    striped
+                    variant="primary"
+                    now={100}
+                    className='w-100'
+                />
             </Container>
             <ResultText
                 headings={pizzas}

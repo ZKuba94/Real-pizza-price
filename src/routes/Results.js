@@ -14,7 +14,9 @@ function Results({
                  }) {
 
     return (
-        <Container className='Results'>
+        <Container
+            className='Results'
+        >
             <Row>
                 <Col>
                     <ListGroup>
@@ -35,7 +37,6 @@ function Results({
                             pizzaSize={pizzaSizesObj[index].value}
                             pizzaQuantity={pizzaQuantities[index].value}
                             pizzaPrice={pizzaPrices[index].value}
-                            // pizzaCompare={pizzaCompare[index].value}
                             pizzaCompareObj={pizzaCompare}
                             onPizzaCompareChange={onPizzaCompareChange}
                         />
