@@ -10,14 +10,16 @@ function ResultText({
                     }) {
     const betterOption = pizzaCompare[0].value > pizzaCompare[1].value ? 1 : 0
     const percentageValue = () => {
-        const area0 = (((Math.PI * ((pizzaSizes[0].value / 2) ** 2)).toFixed(2)) * pizzaQuantities[0].value)
-        const area1 = (((Math.PI * ((pizzaSizes[1].value / 2) ** 2)).toFixed(2)) * pizzaQuantities[1].value)
-        const totalCost0 = Math.max(area0, area1) * pizzaCompare[0].value
-        const totalCost1 = Math.max(area0, area1) * pizzaCompare[1].value
+        const pizzaCount = [...headings.keys()]
+        const pizzaAreas = pizzaCount.map(el => (
+            ((Math.PI * ((pizzaSizes[el].value / 2) ** 2)).toFixed(2)) * pizzaQuantities[el].value))
+        const totalCosts = pizzaCount.map(el => (
+            Math.max(...pizzaAreas) * pizzaCompare[el].value
+        ))
         return (
             betterOption === 0
-                ? (((totalCost1 / totalCost0) - 1) * 100).toFixed(2)
-                : (((totalCost0 / totalCost1) - 1) * 100).toFixed(2)
+                ? (((totalCosts[1] / totalCosts[0]) - 1) * 100).toFixed(2)
+                : (((totalCosts[0] / totalCosts[1]) - 1) * 100).toFixed(2)
         )
     }
     useEffect(() => {
