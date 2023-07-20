@@ -8,16 +8,17 @@ function ResultText({
                         pizzaSizes,
                         pizzaQuantities,
                     }) {
-    const betterOption = pizzaCompare[0].value < pizzaCompare[1].value ? 0 : 1
+    const betterOption = pizzaCompare[0].value > pizzaCompare[1].value ? 1 : 0
     const percentageValue = () => {
-        const something = (Math.abs((((Math.PI * ((pizzaSizes[0].value/2) ** 2)).toFixed(2)) * pizzaQuantities[0].value)
-            - (((Math.PI * ((pizzaSizes[1].value/2) ** 2)).toFixed(2)) * pizzaQuantities[1].value))
-        * betterOption === 0 ? pizzaCompare[1].value : pizzaCompare[0].value
-        + betterOption === 0 ? pizzaPrices[1].value : pizzaPrices[0].value)
-        / (betterOption === 0 ? pizzaPrices[0].value : pizzaPrices[1].value)
-        console.log(betterOption === 0 ? pizzaPrices[1].value : pizzaPrices[0].value)
-        console.log(betterOption === 0 ? pizzaPrices[0].value : pizzaPrices[1].value)
-        return ((something - 1)*100).toFixed(2)
+        const area0 = (((Math.PI * ((pizzaSizes[0].value / 2) ** 2)).toFixed(2)) * pizzaQuantities[0].value)
+        const area1 = (((Math.PI * ((pizzaSizes[1].value / 2) ** 2)).toFixed(2)) * pizzaQuantities[1].value)
+        const totalCost0 = Math.max(area0, area1) * pizzaCompare[0].value
+        const totalCost1 = Math.max(area0, area1) * pizzaCompare[1].value
+        return (
+            betterOption === 0
+                ? (((totalCost1 / totalCost0) - 1) * 100).toFixed(2)
+                : (((totalCost0 / totalCost1) - 1) * 100).toFixed(2)
+        )
     }
     useEffect(() => {
         percentageValue()
