@@ -11,8 +11,18 @@ function App() {
     const measurements = ['cm', 'm', 'in', 'ft'];
     const currencies = ['PLN', 'USD', 'EUR']
     const pizzas = ['Pizza 1', 'Pizza 2']
-    const [pizzaMeasure, setPizzaMeasure] = useState(measurements[0])
-    const [actPizzaCurrency, setPizzaCurrencyChange] = useState(currencies[0])
+    const [pizzaMeasuresInputs, setPizzaMeasuresInputs] = useState([
+        {id: 0, value: measurements[0]},
+        {id: 1, value: measurements[0]},
+    ])
+    const [pizzaMeasuresResult, setPizzaMeasuresResult] = useState([
+        {id: 0, value: measurements[0]},
+        {id: 1, value: measurements[0]},
+    ])
+    const [pizzaCurrencyInputs, setPizzaCurrencyInputs] = useState([
+        {id: 0, value: currencies[0]},
+        {id: 1, value: currencies[0]},
+    ])
     const [pizzaSizes, setPizzaSizes] = useState([
         {id: 0, value: 10},
         {id: 1, value: 20},
@@ -34,12 +44,12 @@ function App() {
             <Header/>
             <Inputs
                 headings={pizzas}
-                measures={measurements}
+                measurements={measurements}
                 currencies={currencies}
-                actPizzaMeasure={pizzaMeasure}
-                onPizzaMeasureChange={setPizzaMeasure}
-                actPizzaCurrency={actPizzaCurrency}
-                onPizzaCurrencyChange={setPizzaCurrencyChange}
+                pizzaMeasuresInputs={pizzaMeasuresInputs}
+                onPizzaMeasureChange={setPizzaMeasuresInputs}
+                pizzaCurrencyInputs={pizzaCurrencyInputs}
+                onPizzaCurrencyInputs={setPizzaCurrencyInputs}
                 pizzaSizesObj={pizzaSizes}
                 onPizzaSizesChange={setPizzaSizes}
                 pizzaQuantities={pizzaQuantities}
@@ -60,8 +70,10 @@ function App() {
             </Container>
             <Results
                 headings={pizzas}
-                actPizzaMeasure={pizzaMeasure}
-                actPizzaCurrency={actPizzaCurrency}
+                measurements={measurements}
+                pizzaMeasuresResult={pizzaMeasuresResult}
+                onPizzaMeasuresResult={setPizzaMeasuresResult}
+                pizzaCurrencyResults={pizzaCurrencyInputs}
                 pizzaSizesObj={pizzaSizes}
                 pizzaQuantities={pizzaQuantities}
                 pizzaPrices={pizzaPrices}

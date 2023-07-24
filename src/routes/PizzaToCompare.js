@@ -1,15 +1,18 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import React from "react";
+import PropTypes from "prop-types";
 
 function PizzaToCompare({
                             id,
                             heading,
-                            measures,
+                            measurements,
                             currencies,
-                            actPizzaMeasure,
+                            actPizzaMeasuresInputs,
+                            pizzaMeasuresInputs,
                             onPizzaMeasureChange,
-                            actPizzaCurrency,
-                            onPizzaCurrencyChange,
+                            pizzaCurrencyInputs,
+                            onPizzaCurrencyInputs,
+                            actPizzaCurrencyInputs,
                             pizzaSizesObj,
                             pizzaSize,
                             onPizzaSizesChange,
@@ -20,7 +23,7 @@ function PizzaToCompare({
                             pizzaPrices,
                             onPizzaPricesChange,
                         }) {
-    const measurements = measures.map(measure =>
+    const measurements2 = measurements.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
     )
     const currency = currencies.map(curr =>
@@ -34,6 +37,15 @@ function PizzaToCompare({
         )
         clbFunc(updatedData)
     })
+    const handleInputsChangesStrings = (key, obj, clbFunc) => (e => {
+        const updatedData = obj.map((item) =>
+            item.id === key
+                ? {...item, value: e.target.value}
+                : item
+        )
+        clbFunc(updatedData)
+    })
+
     return (
         <Container
             className='PizzaToCompare'
@@ -59,14 +71,12 @@ function PizzaToCompare({
                                 <Col>
                                     <Form.Select
                                         name='measure'
-                                        value={actPizzaMeasure}
+                                        value={actPizzaMeasuresInputs}
                                         onChange={
-                                            (e) => {
-                                                onPizzaMeasureChange(e.target.value)
-                                            }
+                                            handleInputsChangesStrings(id, pizzaMeasuresInputs, onPizzaMeasureChange)
                                         }
                                     >
-                                        {measurements}
+                                        {measurements2}
                                     </Form.Select>
                                 </Col>
                             </Form.Group>
@@ -104,11 +114,9 @@ function PizzaToCompare({
                                 <Col>
                                     <Form.Select
                                         name='currency'
-                                        value={actPizzaCurrency}
+                                        value={actPizzaCurrencyInputs}
                                         onChange={
-                                            (e) => {
-                                                onPizzaCurrencyChange(e.target.value)
-                                            }
+                                            handleInputsChangesStrings(id,pizzaCurrencyInputs,onPizzaCurrencyInputs)
                                         }
                                     >
                                         {currency}
@@ -122,5 +130,25 @@ function PizzaToCompare({
         </Container>
     )
 }
-
+PizzaToCompare.propTypes = {
+    id: PropTypes.number.isRequired,
+    heading: PropTypes.string.isRequired,
+    measurements: PropTypes.array.isRequired,
+    currencies: PropTypes.array.isRequired,
+    actPizzaMeasuresInputs: PropTypes.string.isRequired,
+    pizzaMeasuresInputs: PropTypes.array.isRequired,
+    onPizzaMeasureChange: PropTypes.func.isRequired,
+    pizzaCurrencyInputs: PropTypes.array.isRequired,
+    onPizzaCurrencyInputs: PropTypes.func.isRequired,
+    actPizzaCurrencyInputs: PropTypes.string.isRequired,
+    pizzaSizesObj: PropTypes.array.isRequired,
+    pizzaSize: PropTypes.number.isRequired,
+    onPizzaSizesChange: PropTypes.func.isRequired,
+    pizzaQuantitiesObj: PropTypes.array.isRequired,
+    pizzaQuantities: PropTypes.number.isRequired,
+    onPizzaQuantitiesChange: PropTypes.func.isRequired,
+    pizzaPrice: PropTypes.number.isRequired,
+    pizzaPrices: PropTypes.array.isRequired,
+    onPizzaPricesChange: PropTypes.func.isRequired,
+}
 export default PizzaToCompare;

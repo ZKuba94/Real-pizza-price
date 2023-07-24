@@ -1,11 +1,14 @@
 import {Col, Container, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import PizzaResultNumbers from "./PizzaResultNumbers"
-import AddPizzaButton from "./AddPizzaButton";
+// import AddPizzaButton from "./AddPizzaButton";
+import PropTypes from "prop-types";
 
 function Results({
                      headings,
-                     actPizzaMeasure,
-                     actPizzaCurrency,
+                     measurements,
+                     pizzaMeasuresResult,
+                     onPizzaMeasuresResult,
+                     pizzaCurrencyResults,
                      pizzaSizesObj,
                      pizzaQuantities,
                      pizzaPrices,
@@ -32,8 +35,11 @@ function Results({
                     <Col>
                         <PizzaResultNumbers
                             index={index}
-                            actPizzaMeasure={actPizzaMeasure}
-                            actPizzaCurrency={actPizzaCurrency}
+                            measurements={measurements}
+                            actPizzaMeasureResult={pizzaMeasuresResult[index].value}
+                            pizzaMeasuresResult={pizzaMeasuresResult}
+                            onPizzaMeasuresResult={onPizzaMeasuresResult}
+                            actPizzaCurrencyResult={pizzaCurrencyResults[index].value}
                             pizzaSize={pizzaSizesObj[index].value}
                             pizzaQuantity={pizzaQuantities[index].value}
                             pizzaPrice={pizzaPrices[index].value}
@@ -42,12 +48,25 @@ function Results({
                         />
                     </Col>
                 ))}
-                <Col>
-                    <AddPizzaButton/>
-                </Col>
+                {/*<Col>*/}
+                {/*    <AddPizzaButton/>*/}
+                {/*</Col>*/}
             </Row>
         </Container>
     )
+}
+
+Results.propTypes = {
+    headings: PropTypes.array.isRequired,
+    measurements: PropTypes.array.isRequired,
+    pizzaMeasuresResult: PropTypes.array.isRequired,
+    onPizzaMeasuresResult: PropTypes.func.isRequired,
+    pizzaCurrencyResults: PropTypes.array.isRequired,
+    pizzaSizesObj: PropTypes.array.isRequired,
+    pizzaQuantities: PropTypes.array.isRequired,
+    pizzaPrices: PropTypes.array.isRequired,
+    pizzaCompare: PropTypes.array.isRequired,
+    onPizzaCompareChange: PropTypes.func.isRequired,
 }
 
 export default Results;

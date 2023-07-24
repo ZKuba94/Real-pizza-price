@@ -1,10 +1,14 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import React, {useEffect} from "react";
+import PropTypes from "prop-types";
 
 function PizzaResultNumbers({
                                 index,
-                                actPizzaMeasure,
-                                actPizzaCurrency,
+                                measurements,
+                                actPizzaMeasureResult,
+                                pizzaMeasuresResult,
+                                onPizzaMeasuresResult,
+                                actPizzaCurrencyResult,
                                 pizzaSize,
                                 pizzaQuantity,
                                 pizzaPrice,
@@ -13,6 +17,9 @@ function PizzaResultNumbers({
                             }) {
     const r = pizzaSize / 2
     const areaOfPizza = ((Math.PI * (r ** 2)).toFixed(2)) * pizzaQuantity
+    const measurements2 = measurements.map(measure =>
+        <option key={measure} value={measure}>{measure}</option>
+    )
     const handleCompareChange = (id, obj, clbFunc) => {
         const updatedData = obj.map((item) =>
             item.id === id
@@ -21,9 +28,17 @@ function PizzaResultNumbers({
         )
         clbFunc(updatedData)
     }
+    const handleInputsChange = (key, obj, clbFunc) => (e => {
+        const updatedData = obj.map((item) =>
+            item.id === key
+                ? {...item, value: e.target.value}
+                : item
+        )
+        clbFunc(updatedData)
+    })
     useEffect(() => {
         handleCompareChange(index, pizzaCompareObj, onPizzaCompareChange)
-    }, [pizzaSize, pizzaQuantity,pizzaPrice])
+    }, [pizzaSize, pizzaQuantity, pizzaPrice])
 
     return (
         <Container className='PizzaResultNumbers'>
@@ -40,9 +55,15 @@ function PizzaResultNumbers({
                                     </Form.Text>
                                 </Col>
                                 <Col>
-                                    <Form.Text>
-                                        {actPizzaMeasure}<sup>2</sup>
-                                    </Form.Text>
+                                    <Form.Select
+                                        name='pizzaMeasure'
+                                        value={actPizzaMeasureResult}
+                                        onChange={
+                                            handleInputsChange(index, pizzaMeasuresResult, onPizzaMeasuresResult)
+                                        }
+                                    >
+                                        {measurements2}
+                                    </Form.Select>
                                 </Col>
                             </Form.Group>
                         </ListGroupItem>
@@ -57,8 +78,8 @@ function PizzaResultNumbers({
                                 </Col>
                                 <Col>
                                     <Form.Text>
-                                        {actPizzaCurrency}
-                                        /{actPizzaMeasure}<sup>2</sup>
+                                        {actPizzaCurrencyResult}
+                                        /{actPizzaMeasureResult}<sup>2</sup>
                                     </Form.Text>
                                 </Col>
                             </Form.Group>
@@ -70,4 +91,17 @@ function PizzaResultNumbers({
     )
 }
 
+PizzaResultNumbers.propTypes = {
+    index: PropTypes.number.isRequired,
+    measurements: PropTypes.array.isRequired,
+    actPizzaMeasureResult: PropTypes.string.isRequired,
+    pizzaMeasuresResult: PropTypes.array.isRequired,
+    onPizzaMeasuresResult: PropTypes.func.isRequired,
+    actPizzaCurrencyResult: PropTypes.string.isRequired,
+    pizzaSize: PropTypes.number.isRequired,
+    pizzaQuantity: PropTypes.number.isRequired,
+    pizzaPrice: PropTypes.number.isRequired,
+    pizzaCompareObj: PropTypes.array.isRequired,
+    onPizzaCompareChange: PropTypes.func.isRequired,
+}
 export default PizzaResultNumbers;
