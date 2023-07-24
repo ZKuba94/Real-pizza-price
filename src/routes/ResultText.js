@@ -9,7 +9,7 @@ function ResultText({
                         pizzaSizes,
                         pizzaQuantities,
                     }) {
-    let betterOption = pizzaCompare[0].value > pizzaCompare[1].value ? 1:0
+    let betterOption = pizzaCompare[0].value > pizzaCompare[1].value ? 1 : 0
     const percentageValue = () => {
         const pizzaCount = [...headings.keys()]
         const betterOptionValues = pizzaCount.map(el => (
@@ -44,6 +44,7 @@ function ResultText({
         </Container>
     )
 }
+
 ResultText.propTypes = {
     headings: PropTypes.array.isRequired,
     pizzaCompare: PropTypes.array.isRequired,

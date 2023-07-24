@@ -15,7 +15,6 @@ function Results({
                      pizzaCompare,
                      onPizzaCompareChange,
                  }) {
-
     return (
         <Container
             className='Results'

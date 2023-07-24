@@ -29,7 +29,7 @@ function PizzaToCompare({
     const currency = currencies.map(curr =>
         <option key={curr} value={curr}>{curr}</option>
     )
-    const handleInputsChanges = (key, obj, clbFunc) => (e => {
+    const handleInputsChangesNumbers = (key, obj, clbFunc) => (e => {
         const updatedData = obj.map((item) =>
             item.id === key
                 ? {...item, value: parseFloat(e.target.value)}
@@ -64,7 +64,7 @@ function PizzaToCompare({
                                         type='number'
                                         value={pizzaSize}
                                         onChange={
-                                            handleInputsChanges(id, pizzaSizesObj, onPizzaSizesChange)
+                                            handleInputsChangesNumbers(id, pizzaSizesObj, onPizzaSizesChange)
                                         }
                                     />
                                 </Col>
@@ -91,7 +91,7 @@ function PizzaToCompare({
                                         type='number'
                                         value={pizzaQuantities}
                                         onChange={
-                                            handleInputsChanges(id, pizzaQuantitiesObj, onPizzaQuantitiesChange)
+                                            handleInputsChangesNumbers(id, pizzaQuantitiesObj, onPizzaQuantitiesChange)
                                         }
                                     />
                                 </Col>
@@ -107,7 +107,7 @@ function PizzaToCompare({
                                         type='number'
                                         value={pizzaPrice}
                                         onChange={
-                                            handleInputsChanges(id, pizzaPrices, onPizzaPricesChange)
+                                            handleInputsChangesNumbers(id, pizzaPrices, onPizzaPricesChange)
                                         }
                                     />
                                 </Col>
@@ -116,7 +116,7 @@ function PizzaToCompare({
                                         name='currency'
                                         value={actPizzaCurrencyInputs}
                                         onChange={
-                                            handleInputsChangesStrings(id,pizzaCurrencyInputs,onPizzaCurrencyInputs)
+                                            handleInputsChangesStrings(id, pizzaCurrencyInputs, onPizzaCurrencyInputs)
                                         }
                                     >
                                         {currency}
@@ -130,6 +130,7 @@ function PizzaToCompare({
         </Container>
     )
 }
+
 PizzaToCompare.propTypes = {
     id: PropTypes.number.isRequired,
     heading: PropTypes.string.isRequired,

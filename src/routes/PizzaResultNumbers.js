@@ -28,7 +28,7 @@ function PizzaResultNumbers({
         )
         clbFunc(updatedData)
     }
-    const handleInputsChange = (key, obj, clbFunc) => (e => {
+    const handleInputsChangeStrings = (key, obj, clbFunc) => (e => {
         const updatedData = obj.map((item) =>
             item.id === key
                 ? {...item, value: e.target.value}
@@ -59,7 +59,7 @@ function PizzaResultNumbers({
                                         name='pizzaMeasure'
                                         value={actPizzaMeasureResult}
                                         onChange={
-                                            handleInputsChange(index, pizzaMeasuresResult, onPizzaMeasuresResult)
+                                            handleInputsChangeStrings(index, pizzaMeasuresResult, onPizzaMeasuresResult)
                                         }
                                     >
                                         {measurements2}
@@ -79,7 +79,8 @@ function PizzaResultNumbers({
                                 <Col>
                                     <Form.Text>
                                         {actPizzaCurrencyResult}
-                                        /{actPizzaMeasureResult}<sup>2</sup>
+                                        /{actPizzaMeasureResult}
+                                        <sup>2</sup>
                                     </Form.Text>
                                 </Col>
                             </Form.Group>
