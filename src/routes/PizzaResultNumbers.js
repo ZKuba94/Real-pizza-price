@@ -7,6 +7,7 @@ function PizzaResultNumbers({
                                 measurements,
                                 actPizzaMeasureResult,
                                 pizzaMeasuresResult,
+                                actPizzaMeasuresInputs,
                                 onPizzaMeasuresResult,
                                 actPizzaCurrencyResult,
                                 pizzaSize,
@@ -15,7 +16,77 @@ function PizzaResultNumbers({
                                 pizzaCompareObj,
                                 onPizzaCompareChange,
                             }) {
-    const r = pizzaSize / 2
+    const connections = [
+        {
+            id: 0, measure: 'cm', values: [
+                {id: 0, measure: 'cm', value: 1},
+                {id: 1, measure: 'm', value: 0.01},
+                {id: 2, measure: 'in', value: 0.394},
+                {id: 3, measure: 'ft', value: 0.033},
+            ]
+        },
+        {
+            id: 1, measure: 'm', values: [
+                {id: 0, measure: 'cm', value: 100},
+                {id: 1, measure: 'm', value: 1},
+                {id: 2, measure: 'in', value: 39.37},
+                {id: 3, measure: 'ft', value: 3.281},
+            ]
+        },
+        {
+            id: 2, measure: 'in', values: [
+                {id: 0, measure: 'cm', value: 2.54},
+                {id: 1, measure: 'm', value: 0.0254},
+                {id: 2, measure: 'in', value: 1},
+                {id: 3, measure: 'ft', value: 0.083},
+            ]
+        },
+        {
+            id: 3, measure: 'ft', values: [
+                {id: 0, measure: 'cm', value: 30.48},
+                {id: 1, measure: 'm', value: 0.3048},
+                {id: 2, measure: 'in', value: 12},
+                {id: 3, measure: 'ft', value: 1},
+            ]
+        },
+    ]
+    let inputPizzaMeasure;
+    let realPizzaSize;
+    switch (actPizzaMeasuresInputs) {
+        case "cm":
+            inputPizzaMeasure = connections[0].values;
+            break;
+        case "m":
+            inputPizzaMeasure = connections[1].values;
+            break;
+        case "in":
+            inputPizzaMeasure = connections[2].values;
+            break;
+        case "ft":
+            inputPizzaMeasure = connections[3].values;
+            break;
+        default:
+            inputPizzaMeasure = {};
+            break;
+    }
+    switch (actPizzaMeasureResult) {
+        case "cm":
+            realPizzaSize = inputPizzaMeasure[0].value;
+            break;
+        case "m":
+            realPizzaSize = inputPizzaMeasure[1].value;
+            break;
+        case "in":
+            realPizzaSize = inputPizzaMeasure[2].value;
+            break;
+        case "ft":
+            realPizzaSize = inputPizzaMeasure[3].value;
+            break;
+        default:
+            inputPizzaMeasure = {};
+            break;
+    }
+    const r = (pizzaSize * realPizzaSize) / 2
     const areaOfPizza = ((Math.PI * (r ** 2)).toFixed(2)) * pizzaQuantity
     const measurements2 = measurements.map(measure =>
         <option key={measure} value={measure}>{measure}</option>

@@ -7,6 +7,7 @@ function Results({
                      headings,
                      measurements,
                      pizzaMeasuresResult,
+                     pizzaMeasuresInputs,
                      onPizzaMeasuresResult,
                      pizzaCurrencyResults,
                      pizzaSizesObj,
@@ -37,6 +38,7 @@ function Results({
                             measurements={measurements}
                             actPizzaMeasureResult={pizzaMeasuresResult[index].value}
                             pizzaMeasuresResult={pizzaMeasuresResult}
+                            actPizzaMeasuresInputs={pizzaMeasuresInputs[index].value}
                             onPizzaMeasuresResult={onPizzaMeasuresResult}
                             actPizzaCurrencyResult={pizzaCurrencyResults[index].value}
                             pizzaSize={pizzaSizesObj[index].value}

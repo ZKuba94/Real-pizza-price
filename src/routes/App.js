@@ -72,6 +72,7 @@ function App() {
                 headings={pizzas}
                 measurements={measurements}
                 pizzaMeasuresResult={pizzaMeasuresResult}
+                pizzaMeasuresInputs={pizzaMeasuresInputs}
                 onPizzaMeasuresResult={setPizzaMeasuresResult}
                 pizzaCurrencyResults={pizzaCurrencyInputs}
                 pizzaSizesObj={pizzaSizes}
@@ -96,6 +97,7 @@ function App() {
                 pizzaPrices={pizzaPrices}
                 pizzaSizes={pizzaSizes}
                 pizzaQuantities={pizzaQuantities}
+                pizzaMeasuresResult={pizzaMeasuresResult}
             />
         </div>
     );
