@@ -1,6 +1,7 @@
 import {Container} from "react-bootstrap";
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import connections from "./SomeData";
 
 function ResultText({
                         headings,
@@ -12,28 +13,31 @@ function ResultText({
                     }) {
     let betterOptionValues = pizzaCompare.map(el=>el.value)
     let betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
-    let pizzaSizesInCm= pizzaMeasuresResult.map(el=>{
-        switch (el.value) {
-            case "cm":
-                return 1;
-            case "m":
-                return 0.01;
-            case "in":
-                return 0.394;
-            case "ft":
-                return 0.033;
-            default:
-                return '';
-        }
-    })
+    // let pizzaSizesInCm= pizzaMeasuresResult.map(el=>{
+    //     switch (el.value) {
+    //         case "cm":
+    //             return 1;
+    //         case "m":
+    //             return 0.01;
+    //         case "in":
+    //             return 0.394;
+    //         case "ft":
+    //             return 0.033;
+    //         default:
+    //             return '';
+    //     }
+    // })
+    let pizzaSizesInCm = pizzaMeasuresResult.map(el => (connections[0].values).find(mes=>mes.measure === el.value))
     const percentageValue = () => {
         const betterOptionValues = pizzaCompare.map(el=>el.value)
         betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
         const pizzaAreas = pizzaCompare.map(el => (
-            ((Math.PI * (((pizzaSizes[el.id].value * pizzaSizesInCm[el.id]) / 2) ** 2)).toFixed(2)) * pizzaQuantities[el.id].value))
+            ((Math.PI * (((pizzaSizes[el.id].value * pizzaSizesInCm[el.id].value) / 2) ** 2)).toFixed(2)) * pizzaQuantities[el.id].value))
         const totalCosts = pizzaCompare.map(el => (
             Math.max(...pizzaAreas) * pizzaCompare[el.id].value
         ))
+        console.log(pizzaCompare)
+        console.log(pizzaAreas)
         return (
 
             betterOption === 0
