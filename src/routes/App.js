@@ -10,34 +10,41 @@ import ResultText from "./ResultText";
 function App() {
     const measurements = ['cm', 'm', 'in', 'ft'];
     const currencies = ['PLN', 'USD', 'EUR']
-    const pizzas = ['Pizza 1', 'Pizza 2']
+    const pizzas = ['Pizza 1', 'Pizza 2', 'Pizza 3']
     const [pizzaMeasuresInputs, setPizzaMeasuresInputs] = useState([
         {id: 0, value: measurements[0]},
         {id: 1, value: measurements[0]},
+        {id: 2, value: measurements[0]},
     ])
     const [pizzaMeasuresResult, setPizzaMeasuresResult] = useState([
         {id: 0, value: measurements[0]},
         {id: 1, value: measurements[0]},
+        {id: 2, value: measurements[0]},
     ])
     const [pizzaCurrencyInputs, setPizzaCurrencyInputs] = useState([
         {id: 0, value: currencies[0]},
         {id: 1, value: currencies[0]},
+        {id: 2, value: currencies[0]},
     ])
     const [pizzaSizes, setPizzaSizes] = useState([
         {id: 0, value: 10},
         {id: 1, value: 20},
+        {id: 2, value: 20},
     ])
     const [pizzaQuantities, setQuantitiesChange] = useState([
         {id: 0, value: 2},
         {id: 1, value: 2},
+        {id: 2, value: 2},
     ])
     const [pizzaPrices, setPizzaPrices] = useState([
         {id: 0, value: 50},
         {id: 1, value: 70},
+        {id: 2, value: 70},
     ])
     const [pizzaCompare, setPizzaCompare] = useState([
         {id: 0, value: 0},
         {id: 1, value: 0},
+        {id: 2, value: 0},
     ])
     return (
         <div className="App">

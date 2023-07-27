@@ -10,44 +10,36 @@ function ResultText({
                         pizzaQuantities,
                         pizzaMeasuresResult,
                     }) {
-    let betterOption = pizzaCompare[0].value > pizzaCompare[1].value ? 1 : 0
-    let pizzaSizeInCm;
-    switch (pizzaMeasuresResult[0].value) {
-        case "cm":
-            pizzaSizeInCm = 1;
-            break;
-        case "m":
-            pizzaSizeInCm = 0.01;
-            break;
-        case "in":
-            pizzaSizeInCm = 0.394;
-            break;
-        case "ft":
-            pizzaSizeInCm = 0.033;
-            break;
-        default:
-            pizzaSizeInCm = {};
-            break;
-    }
-
+    let betterOptionValues = pizzaCompare.map(el=>el.value)
+    let betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
+    let pizzaSizesInCm= pizzaMeasuresResult.map(el=>{
+        switch (el.value) {
+            case "cm":
+                return 1;
+            case "m":
+                return 0.01;
+            case "in":
+                return 0.394;
+            case "ft":
+                return 0.033;
+            default:
+                return '';
+        }
+    })
     const percentageValue = () => {
-        const pizzaCount = [...headings.keys()]
-        const betterOptionValues = pizzaCount.map(el => (
-            pizzaCompare[el].value
-        ))
+        const betterOptionValues = pizzaCompare.map(el=>el.value)
         betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
-        const pizzaAreas = pizzaCount.map(el => (
-            ((Math.PI * (((pizzaSizes[el].value * pizzaSizeInCm) / 2) ** 2)).toFixed(2)) * pizzaQuantities[el].value))
-        const totalCosts = pizzaCount.map(el => (
-            Math.max(...pizzaAreas) * pizzaCompare[el].value
+        const pizzaAreas = pizzaCompare.map(el => (
+            ((Math.PI * (((pizzaSizes[el.id].value * pizzaSizesInCm[el.id]) / 2) ** 2)).toFixed(2)) * pizzaQuantities[el.id].value))
+        const totalCosts = pizzaCompare.map(el => (
+            Math.max(...pizzaAreas) * pizzaCompare[el.id].value
         ))
-        console.log(pizzaAreas)
-        console.log(pizzaCompare)
         return (
+
             betterOption === 0
-                ? (((totalCosts[1] / totalCosts[0]) - 1) * 100).toFixed(2)
-                : (((totalCosts[0] / totalCosts[1]) - 1) * 100).toFixed(2)
-        )
+            ? (((totalCosts[1] / totalCosts[0]) - 1) * 100).toFixed(2)
+            : (((totalCosts[0] / totalCosts[1]) - 1) * 100).toFixed(2)
+    )
     }
     useEffect(() => {
         percentageValue()
@@ -57,8 +49,8 @@ function ResultText({
             className='ResultText'
         >
             <p>
-                {pizzaCompare[0].value === pizzaCompare[1].value ?
-                    `Both pizzas are equally profitable.`
+                {pizzaCompare.every((el)=> el.value === pizzaCompare[0].value) ?
+                    `Each pizza is equally profitable.`
                     : `More profitable is ${headings[betterOption]}. Its more profitable by ${percentageValue()}%, considering whole area of pizza.`}
             </p>
         </Container>
