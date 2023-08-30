@@ -1,7 +1,7 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-import connections from "./SomeData";
+import connections from "./MeasuresObject";
 
 function PizzaResultNumbers({
                                 index,
@@ -17,10 +17,11 @@ function PizzaResultNumbers({
                                 pizzaCompareObj,
                                 onPizzaCompareChange,
                             }) {
+
     const inputPizzaMeasures = connections.find(el=> el.measure === actPizzaMeasuresInputs)
     const realPizzaSizeFactor = (inputPizzaMeasures.values).find(el =>el.measure === actPizzaMeasureResult)
     const r = (pizzaSize * realPizzaSizeFactor.value) / 2
-    const areaOfPizza = ((Math.PI * (r ** 2)).toFixed(2)) * pizzaQuantity
+    const areaOfPizza = ((Math.PI * (r ** 2))) * pizzaQuantity
     const measurementsSelect = measurements.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
     )
@@ -42,7 +43,7 @@ function PizzaResultNumbers({
     })
     useEffect(() => {
         handleCompareChange(index, pizzaCompareObj, onPizzaCompareChange)
-    }, [pizzaSize, pizzaQuantity, pizzaPrice])
+    }, [pizzaSize, pizzaQuantity, pizzaPrice, actPizzaMeasureResult,actPizzaMeasuresInputs])
 
     return (
         <Container className='PizzaResultNumbers'>
@@ -55,7 +56,7 @@ function PizzaResultNumbers({
                             >
                                 <Col>
                                     <Form.Text>
-                                        {areaOfPizza}
+                                        {areaOfPizza.toFixed(2)}
                                     </Form.Text>
                                 </Col>
                                 <Col>

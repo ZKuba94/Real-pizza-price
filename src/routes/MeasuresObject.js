@@ -31,6 +31,14 @@ const connections = [
             {id: 3, measure: 'ft', value: 1},
         ]
     },
+    {
+        id: 4, measure: 'cm', values: [
+            {id: 0, measure: 'cm', value: 1},
+            {id: 1, measure: 'm', value: 0.0001},
+            {id: 2, measure: 'in', value: 0.00394},
+            {id: 3, measure: 'ft', value: 0.00033},
+        ]
+    },
 ]
 
 export default connections;

@@ -1,6 +1,6 @@
 import {Col, Container, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import PizzaResultNumbers from "./PizzaResultNumbers"
-// import AddPizzaButton from "./AddPizzaButton";
+import AddPizzaButton from "./AddPizzaButton";
 import PropTypes from "prop-types";
 
 function Results({
@@ -9,12 +9,19 @@ function Results({
                      pizzaMeasuresResult,
                      pizzaMeasuresInputs,
                      onPizzaMeasuresResult,
+                     pizzaCurrencyInputs,
                      pizzaCurrencyResults,
                      pizzaSizesObj,
                      pizzaQuantities,
                      pizzaPrices,
                      pizzaCompare,
                      onPizzaCompareChange,
+                     onPizzaSizesChange,
+                     setPizzaMeasuresInputs,
+                     setPizzaCurrencyInputs,
+                     setQuantitiesChange,
+                     setPizzaPrices,
+                     // setPizzas,
                  }) {
     return (
         <Container
@@ -49,9 +56,26 @@ function Results({
                         />
                     </Col>
                 ))}
-                {/*<Col>*/}
-                {/*    <AddPizzaButton/>*/}
-                {/*</Col>*/}
+                <Col>
+                    <AddPizzaButton
+                        headings={headings}
+                        pizzaMeasuresInputs={pizzaMeasuresInputs}
+                        pizzaMeasuresResult={pizzaMeasuresResult}
+                        pizzaCurrencyInputs={pizzaCurrencyInputs}
+                        pizzaSizes={pizzaSizesObj}
+                        pizzaQuantities={pizzaQuantities}
+                        pizzaPrices={pizzaPrices}
+                        pizzaCompare={pizzaCompare}
+                        setPizzaSizes={onPizzaSizesChange}
+                        setPizzaMeasuresInputs={setPizzaMeasuresInputs}
+                        setPizzaMeasuresResult={onPizzaMeasuresResult}
+                        setPizzaCurrencyInputs={setPizzaCurrencyInputs}
+                        setQuantitiesChange={setQuantitiesChange}
+                        setPizzaPrices={setPizzaPrices}
+                        setPizzaCompare={onPizzaCompareChange}
+                        // setPizzas={setPizzas}
+                    />
+                </Col>
             </Row>
         </Container>
     )

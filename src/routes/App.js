@@ -11,6 +11,11 @@ function App() {
     const measurements = ['cm', 'm', 'in', 'ft'];
     const currencies = ['PLN', 'USD', 'EUR']
     const pizzas = ['Pizza 1', 'Pizza 2', 'Pizza 3']
+    // const [pizzas, setPizzas] = useState([
+    //     {id: 0, value: 'Pizza 1'},
+    //     {id: 1, value: 'Pizza 2'},
+    //     {id: 2, value: 'Pizza 3'},
+    // ])
     const [pizzaMeasuresInputs, setPizzaMeasuresInputs] = useState([
         {id: 0, value: measurements[0]},
         {id: 1, value: measurements[0]},
@@ -54,6 +59,8 @@ function App() {
                 measurements={measurements}
                 currencies={currencies}
                 pizzaMeasuresInputs={pizzaMeasuresInputs}
+                pizzaMeasuresResult={pizzaMeasuresResult}
+                setPizzaMeasuresResult={setPizzaMeasuresResult}
                 onPizzaMeasureChange={setPizzaMeasuresInputs}
                 pizzaCurrencyInputs={pizzaCurrencyInputs}
                 onPizzaCurrencyInputs={setPizzaCurrencyInputs}
@@ -65,6 +72,7 @@ function App() {
                 onPizzaPricesChange={setPizzaPrices}
                 pizzaCompare={pizzaCompare}
                 onPizzaCompareChange={setPizzaCompare}
+                // setPizzas={setPizzas}
             />
             <Container
                 className='my-4'
@@ -80,13 +88,20 @@ function App() {
                 measurements={measurements}
                 pizzaMeasuresResult={pizzaMeasuresResult}
                 pizzaMeasuresInputs={pizzaMeasuresInputs}
+                setPizzaMeasuresInputs={setPizzaMeasuresInputs}
                 onPizzaMeasuresResult={setPizzaMeasuresResult}
+                pizzaCurrencyInputs={pizzaCurrencyInputs}
+                setPizzaCurrencyInputs={setPizzaCurrencyInputs}
                 pizzaCurrencyResults={pizzaCurrencyInputs}
                 pizzaSizesObj={pizzaSizes}
                 pizzaQuantities={pizzaQuantities}
+                setQuantitiesChange={setQuantitiesChange}
                 pizzaPrices={pizzaPrices}
+                setPizzaPrices={setPizzaPrices}
                 pizzaCompare={pizzaCompare}
                 onPizzaCompareChange={setPizzaCompare}
+                onPizzaSizesChange={setPizzaSizes}
+                // setPizzas={setPizzas}
             />
             <Container
                 className='my-4'
@@ -104,6 +119,7 @@ function App() {
                 pizzaPrices={pizzaPrices}
                 pizzaSizes={pizzaSizes}
                 pizzaQuantities={pizzaQuantities}
+                pizzaMeasuresInputs={pizzaMeasuresInputs}
                 pizzaMeasuresResult={pizzaMeasuresResult}
             />
         </div>

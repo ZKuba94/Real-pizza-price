@@ -2,13 +2,14 @@ import {Col, Container, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import PizzaToCompare from "./PizzaToCompare"
 import PropTypes from "prop-types";
 
-// import AddPizzaButton from "./AddPizzaButton"
+import AddPizzaButton from "./AddPizzaButton"
 
 function Inputs({
                     headings,
                     measurements,
                     currencies,
                     pizzaMeasuresInputs,
+                    pizzaMeasuresResult,
                     onPizzaMeasureChange,
                     pizzaCurrencyInputs,
                     onPizzaCurrencyInputs,
@@ -20,6 +21,8 @@ function Inputs({
                     onPizzaPricesChange,
                     pizzaCompare,
                     onPizzaCompareChange,
+                    setPizzaMeasuresResult,
+                    // setPizzas,
                 }) {
     return (
         <Container
@@ -67,9 +70,26 @@ function Inputs({
                         />
                     </Col>
                 ))}
-                {/*<Col>*/}
-                {/*    <AddPizzaButton/>*/}
-                {/*</Col>*/}
+                <Col>
+                    <AddPizzaButton
+                        headings={headings}
+                        pizzaMeasuresInputs={pizzaMeasuresInputs}
+                        pizzaMeasuresResult={pizzaMeasuresResult}
+                        pizzaCurrencyInputs={pizzaCurrencyInputs}
+                        pizzaSizes={pizzaSizesObj}
+                        pizzaQuantities={pizzaQuantities}
+                        pizzaPrices={pizzaPrices}
+                        pizzaCompare={pizzaCompare}
+                        setPizzaSizes={onPizzaSizesChange}
+                        setPizzaMeasuresInputs={onPizzaMeasureChange}
+                        setPizzaMeasuresResult={setPizzaMeasuresResult}
+                        setPizzaCurrencyInputs={onPizzaCurrencyInputs}
+                        setQuantitiesChange={onPizzaQuantitiesChange}
+                        setPizzaPrices={onPizzaPricesChange}
+                        setPizzaCompare={onPizzaCompareChange}
+                        // setPizzas={setPizzas}
+                    />
+                </Col>
             </Row>
         </Container>
     )
