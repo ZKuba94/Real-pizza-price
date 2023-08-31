@@ -49,7 +49,9 @@ function PizzaResultNumbers({
         <Container className='PizzaResultNumbers'>
             <ListGroup>
                 <Row>
-                    <Form>
+                    <Form
+                        className='rounded-2'
+                    >
                         <ListGroupItem>
                             <Form.Group
                                 as={Row}

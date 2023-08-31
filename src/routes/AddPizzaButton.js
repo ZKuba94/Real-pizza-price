@@ -1,4 +1,3 @@
-import '../styles/AddPizzaButton.css';
 import {Button} from "react-bootstrap";
 
 function AddPizzaButton({

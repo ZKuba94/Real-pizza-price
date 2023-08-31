@@ -4,6 +4,7 @@ import AddPizzaButton from "./AddPizzaButton";
 import PropTypes from "prop-types";
 
 function Results({
+                     pizzas,
                      headings,
                      measurements,
                      pizzaMeasuresResult,
@@ -21,6 +22,7 @@ function Results({
                      setPizzaCurrencyInputs,
                      setQuantitiesChange,
                      setPizzaPrices,
+                     setPizzas,
                  }) {
     return (
         <Container
@@ -28,11 +30,15 @@ function Results({
         >
             <Row>
                 <Col>
-                    <ListGroup>
+                    <ListGroup
+                        className='h-100'
+                    >
                         <ListGroupItem>
                             Area of pizza
                         </ListGroupItem>
-                        <ListGroupItem>
+                        <ListGroupItem
+                            className='h-100'
+                        >
                             Counted price
                         </ListGroupItem>
                     </ListGroup>
@@ -56,9 +62,11 @@ function Results({
                     </Col>
                 ))}
                 <Col
-                    className={headings.length === 4 ?'d-none' :'d-block'}
+                    className={headings.length === 4 ? 'd-none' : 'd-block'}
                 >
                     <AddPizzaButton
+                        className='rounded-2'
+                        pizzas={pizzas}
                         headings={headings}
                         pizzaMeasuresInputs={pizzaMeasuresInputs}
                         pizzaMeasuresResult={pizzaMeasuresResult}
@@ -74,6 +82,7 @@ function Results({
                         setQuantitiesChange={setQuantitiesChange}
                         setPizzaPrices={setPizzaPrices}
                         setPizzaCompare={onPizzaCompareChange}
+                        setPizzas={setPizzas}
                     />
                 </Col>
             </Row>

@@ -1,5 +1,4 @@
 import '../styles/App.css';
-// import '../styles/AddPizzaButton.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./Header";
 import Inputs from "./Inputs";

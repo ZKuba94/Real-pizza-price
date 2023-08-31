@@ -1,5 +1,5 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
 function PizzaToCompare({
@@ -45,6 +45,9 @@ function PizzaToCompare({
         )
         clbFunc(updatedData)
     })
+    useEffect(() => {
+        handleInputsChangesNumbers(id, pizzaSizesObj, onPizzaSizesChange)
+    },[pizzaSize])
 
     return (
         <Container
