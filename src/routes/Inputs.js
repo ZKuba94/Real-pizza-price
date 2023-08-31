@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import AddPizzaButton from "./AddPizzaButton"
 
 function Inputs({
+                    pizzas,
                     headings,
                     measurements,
                     currencies,
@@ -22,7 +23,7 @@ function Inputs({
                     pizzaCompare,
                     onPizzaCompareChange,
                     setPizzaMeasuresResult,
-                    // setPizzas,
+                    setPizzas,
                 }) {
     return (
         <Container
@@ -70,8 +71,11 @@ function Inputs({
                         />
                     </Col>
                 ))}
-                <Col>
+                <Col
+                    className={headings.length === 4 ?'d-none' :'d-block'}
+                >
                     <AddPizzaButton
+                        pizzas={pizzas}
                         headings={headings}
                         pizzaMeasuresInputs={pizzaMeasuresInputs}
                         pizzaMeasuresResult={pizzaMeasuresResult}
@@ -87,7 +91,7 @@ function Inputs({
                         setQuantitiesChange={onPizzaQuantitiesChange}
                         setPizzaPrices={onPizzaPricesChange}
                         setPizzaCompare={onPizzaCompareChange}
-                        // setPizzas={setPizzas}
+                        setPizzas={setPizzas}
                     />
                 </Col>
             </Row>

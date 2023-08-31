@@ -21,7 +21,6 @@ function Results({
                      setPizzaCurrencyInputs,
                      setQuantitiesChange,
                      setPizzaPrices,
-                     // setPizzas,
                  }) {
     return (
         <Container
@@ -56,7 +55,9 @@ function Results({
                         />
                     </Col>
                 ))}
-                <Col>
+                <Col
+                    className={headings.length === 4 ?'d-none' :'d-block'}
+                >
                     <AddPizzaButton
                         headings={headings}
                         pizzaMeasuresInputs={pizzaMeasuresInputs}
@@ -73,7 +74,6 @@ function Results({
                         setQuantitiesChange={setQuantitiesChange}
                         setPizzaPrices={setPizzaPrices}
                         setPizzaCompare={onPizzaCompareChange}
-                        // setPizzas={setPizzas}
                     />
                 </Col>
             </Row>

@@ -1,6 +1,8 @@
+import '../styles/AddPizzaButton.css';
 import {Button} from "react-bootstrap";
 
 function AddPizzaButton({
+                            pizzas,
                             headings,
                             pizzaMeasuresInputs,
                             pizzaMeasuresResult,
@@ -16,23 +18,22 @@ function AddPizzaButton({
                             setQuantitiesChange,
                             setPizzaMeasuresResult,
                             setPizzaSizes,
-                            // setPizzas,
+                            setPizzas,
                         }) {
     const handleClick = () => {
-        // headings.push(`Pizza ${headings.length + 1}`)
-        // setPizzas({id: headings.length - 1, value: `Pizza ${headings.length+1}`})
+        const newPizza = {id: pizzas.length + 1, value: `Pizza ${headings.length + 1}`}
+        setPizzas([...pizzas, newPizza])
         const addElement = (array, func) => {
-            const newElement = {id: headings.length - 1, value: array[headings.length - 2].value}
+            const newElement = {id: headings.length, value: array[headings.length - 2].value}
             func([...array, newElement])
         }
-        addElement(pizzaMeasuresInputs,setPizzaMeasuresInputs)
+        addElement(pizzaMeasuresInputs, setPizzaMeasuresInputs)
         addElement(pizzaMeasuresResult, setPizzaMeasuresResult)
         addElement(pizzaCurrencyInputs, setPizzaCurrencyInputs)
         addElement(pizzaSizes, setPizzaSizes)
-        addElement(pizzaQuantities,setQuantitiesChange)
+        addElement(pizzaQuantities, setQuantitiesChange)
         addElement(pizzaPrices, setPizzaPrices)
         addElement(pizzaCompare, setPizzaCompare)
-        // addElement(headings,setPizzas)
     }
     return (
         <div
