@@ -21,7 +21,7 @@ function PizzaResultNumbers({
     const inputPizzaMeasures = connections.find(el => el.measure === actPizzaMeasuresInputs)
     const realPizzaSizeFactor = (inputPizzaMeasures.values).find(el => el.measure === actPizzaMeasureResult)
     const r = (pizzaSize * realPizzaSizeFactor.value) / 2
-    const areaOfPizza = ((Math.PI * (r ** 2))) * pizzaQuantity
+    const areaOfPizza = (Math.PI * (r ** 2)) * pizzaQuantity
     const measurementsSelect = measurements.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
     )
@@ -44,7 +44,6 @@ function PizzaResultNumbers({
     useEffect(() => {
         handleCompareChange(index, pizzaCompareObj, onPizzaCompareChange)
     }, [pizzaSize, pizzaQuantity, pizzaPrice, actPizzaMeasureResult, actPizzaMeasuresInputs])
-
     return (
         <Container className='PizzaResultNumbers'>
             <ListGroup>

@@ -37,8 +37,6 @@ function ResultText({
             if (secondOptionValues[secondOption] === values[valueOption] && secondOptionValues.length >= 1) {
                 betterPizzas.push(headings[secondOption<valueOption?secondOption:secondOption+1])
                 trimValues(secondOptionValues, secondOption)
-            } else if (values[valueOption] == undefined) {
-                console.log('jakis debil')
             } else if (secondOptionValues[secondOption] !== values[valueOption]) {
                 const percentage = (((totalCosts[betterOptionValues.findIndex(el=>el ===secondOptionValues[secondOption])]
                     / totalCosts[betterOption])-1)*100)
