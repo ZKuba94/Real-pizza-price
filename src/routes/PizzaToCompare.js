@@ -1,8 +1,10 @@
 import {Col, Container, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
+import ClosureButton from "./ClosureButton";
 
 function PizzaToCompare({
+                            pizzas,
                             id,
                             heading,
                             measurements,
@@ -22,6 +24,11 @@ function PizzaToCompare({
                             pizzaPrice,
                             pizzaPrices,
                             onPizzaPricesChange,
+                            setPizzas,
+                            pizzaCompare,
+                            onPizzaCompareChange,
+                            pizzaMeasuresResult,
+                            setPizzaMeasuresResult,
                         }) {
     const measurements2 = measurements.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
@@ -47,7 +54,7 @@ function PizzaToCompare({
     })
     useEffect(() => {
         handleInputsChangesNumbers(id, pizzaSizesObj, onPizzaSizesChange)
-    },[pizzaSize])
+    }, [pizzaSize, pizzaPrice, pizzaQuantities])
 
     return (
         <Container
@@ -55,7 +62,32 @@ function PizzaToCompare({
         >
             <ListGroup>
                 <ListGroupItem>
-                    {heading}
+                    <div className='d-flex justify-content-between align-items-start'>
+                        {heading}
+                        <Col
+                            className={pizzas.length < 3 ? 'd-none' : 'd-block text-end justify-content-top'}
+                        >
+                            <ClosureButton
+                                id={id}
+                                pizzas={pizzas}
+                                setPizzas={setPizzas}
+                                pizzaMeasuresInputs={pizzaMeasuresInputs}
+                                setPizzaMeasuresInputs={onPizzaMeasureChange}
+                                pizzaMeasuresResult={pizzaMeasuresResult}
+                                setPizzaMeasuresResult={setPizzaMeasuresResult}
+                                pizzaCurrencyInputs={pizzaCurrencyInputs}
+                                setPizzaCurrencyInputs={onPizzaCurrencyInputs}
+                                pizzaSizes={pizzaSizesObj}
+                                setPizzaSizes={onPizzaSizesChange}
+                                pizzaQuantities={pizzaQuantities}
+                                setQuantitiesChange={onPizzaQuantitiesChange}
+                                pizzaPrices={pizzaPrices}
+                                setPizzaPrices={onPizzaPricesChange}
+                                pizzaCompare={pizzaCompare}
+                                setPizzaCompare={onPizzaCompareChange}
+                            />
+                        </Col>
+                    </div>
                     <Form>
                         <ListGroupItem>
                             <Form.Group

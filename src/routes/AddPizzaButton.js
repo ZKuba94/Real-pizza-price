@@ -20,7 +20,7 @@ function AddPizzaButton({
                             setPizzas,
                         }) {
     const handleClick = () => {
-        const newPizza = {id: pizzas.length + 1, value: `Pizza ${headings.length + 1}`}
+        const newPizza = {id: pizzas.length, value: `Pizza ${headings.length + 1}`}
         setPizzas([...pizzas, newPizza])
         const addElement = (array, func) => {
             const newElement = {id: headings.length, value: array[headings.length - 2].value}

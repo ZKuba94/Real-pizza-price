@@ -47,6 +47,7 @@ function Inputs({
                 {headings.map((item, index) => (
                     <Col>
                         <PizzaToCompare
+                            pizzas={pizzas}
                             id={index}
                             heading={item}
                             pizzaSizesObj={pizzaSizesObj}
@@ -68,6 +69,9 @@ function Inputs({
                             onPizzaPricesChange={onPizzaPricesChange}
                             pizzaCompare={pizzaCompare}
                             onPizzaCompareChange={onPizzaCompareChange}
+                            setPizzas={setPizzas}
+                            pizzaMeasuresResult={pizzaMeasuresResult}
+                            setPizzaMeasuresResult={setPizzaMeasuresResult}
                         />
                     </Col>
                 ))}
