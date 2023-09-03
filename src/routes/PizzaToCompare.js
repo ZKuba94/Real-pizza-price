@@ -79,7 +79,7 @@ function PizzaToCompare({
                                 setPizzaCurrencyInputs={onPizzaCurrencyInputs}
                                 pizzaSizes={pizzaSizesObj}
                                 setPizzaSizes={onPizzaSizesChange}
-                                pizzaQuantities={pizzaQuantities}
+                                pizzaQuantities={pizzaQuantitiesObj}
                                 setQuantitiesChange={onPizzaQuantitiesChange}
                                 pizzaPrices={pizzaPrices}
                                 setPizzaPrices={onPizzaPricesChange}

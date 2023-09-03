@@ -12,10 +12,14 @@ function ResultText({
                         pizzaMeasuresInputs,
                         pizzaMeasuresResult,
                     }) {
-
     let inputPizzaMeasures = pizzaMeasuresInputs.map(el => (connections.find(mes => mes.measure === el.value)).values)
     let pizzaSizesInCmResults = pizzaMeasuresResult.map(el => (connections[4].values).find(mes => mes.measure === el.value))
+    // let pizzaSizesInCmResults = pizzaSizesInCm.map((item,index)=>({
+    //     ...item,
+    //     id:pizzaCompare[index].id,
+    // }))
     let betterOptionValues = pizzaCompare.map(el => el.value * pizzaSizesInCmResults[el.id].value)
+    // console.log(betterOptionValues)
     let betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
     const realPizzaSizeFactorInputs = pizzaMeasuresResult.map(el => (inputPizzaMeasures[el.id]).find(mes => mes.measure === el.value))
 
@@ -35,16 +39,16 @@ function ResultText({
             secondOptionValues.splice(valueOption, 1)
             const secondOption = secondOptionValues.findIndex(el => el === Math.min(...secondOptionValues))
             if (secondOptionValues[secondOption] === values[valueOption] && secondOptionValues.length >= 1) {
-                betterPizzas.push(headings[secondOption<valueOption?secondOption:secondOption+1])
+                betterPizzas.push(headings[secondOption < valueOption ? secondOption : secondOption + 1])
                 trimValues(secondOptionValues, secondOption)
             } else if (secondOptionValues[secondOption] !== values[valueOption]) {
-                const percentage = (((totalCosts[betterOptionValues.findIndex(el=>el ===secondOptionValues[secondOption])]
-                    / totalCosts[betterOption])-1)*100)
+                const percentage = (((totalCosts[betterOptionValues.findIndex(el => el === secondOptionValues[secondOption])]
+                    / totalCosts[betterOption]) - 1) * 100)
                     .toFixed(2)
                 return message = `
                 ${betterPizzas.join(' and ')} 
-                ${betterPizzas.length===1?'is':'are'} 
-                more profitable than the second one (${headings[betterOptionValues.findIndex(el=>el ===secondOptionValues[secondOption])]}) 
+                ${betterPizzas.length === 1 ? 'is' : 'are'} 
+                more profitable than the second one (${headings[betterOptionValues.findIndex(el => el === secondOptionValues[secondOption])]}) 
                 by ${percentage}%, considering whole area of pizza.`
             }
         }

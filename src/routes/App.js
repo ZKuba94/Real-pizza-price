@@ -27,11 +27,11 @@ function App() {
         {id: 1, value: currencies[0]},
     ])
     const [pizzaSizes, setPizzaSizes] = useState([
-        {id: 0, value: 10},
-        {id: 1, value: 20},
+        {id: 0, value: 45},
+        {id: 1, value: 30},
     ])
     const [pizzaQuantities, setQuantitiesChange] = useState([
-        {id: 0, value: 2},
+        {id: 0, value: 1},
         {id: 1, value: 2},
     ])
     const [pizzaPrices, setPizzaPrices] = useState([

@@ -18,12 +18,10 @@ function ClosureButton({
                            pizzaCompare,
                            setPizzaCompare,
                        }) {
-    console.log(pizzas)
     const handleClosure = () => {
         const removeElement = (array, func) => {
             array.splice(id, 1)
-            // const newElement = {id: headings.length, value: array[headings.length - 2].value}
-            func([array])
+            func([...array])
         }
         removeElement(pizzas, setPizzas)
         removeElement(pizzaMeasuresInputs, setPizzaMeasuresInputs)
@@ -33,7 +31,6 @@ function ClosureButton({
         removeElement(pizzaQuantities, setQuantitiesChange)
         removeElement(pizzaPrices, setPizzaPrices)
         removeElement(pizzaCompare, setPizzaCompare)
-        console.log(pizzas)
     }
     return (
         <div
