@@ -4,17 +4,17 @@ import PropTypes from "prop-types";
 import connections from "./MeasuresObject";
 
 function PizzaResultNumbers({
-                                index,
                                 measurements,
-                                actPizzaMeasureResult,
+                                index,
                                 pizzaMeasuresResult,
-                                actPizzaMeasuresInputs,
-                                onPizzaMeasuresResult,
-                                actPizzaCurrencyResult,
                                 pizzaSize,
                                 pizzaQuantity,
                                 pizzaPrice,
                                 pizzaCompareObj,
+                                actPizzaMeasureResult,
+                                actPizzaMeasuresInputs,
+                                actPizzaCurrencyResult,
+                                onPizzaMeasuresResultChange,
                                 onPizzaCompareChange,
                             }) {
 
@@ -65,7 +65,7 @@ function PizzaResultNumbers({
                                         name='pizzaMeasure'
                                         value={actPizzaMeasureResult}
                                         onChange={
-                                            handleInputsChangeStrings(index, pizzaMeasuresResult, onPizzaMeasuresResult)
+                                            handleInputsChangeStrings(index, pizzaMeasuresResult, onPizzaMeasuresResultChange)
                                         }
                                     >
                                         {measurementsSelect}
@@ -99,16 +99,17 @@ function PizzaResultNumbers({
 }
 
 PizzaResultNumbers.propTypes = {
-    index: PropTypes.number.isRequired,
     measurements: PropTypes.array.isRequired,
-    actPizzaMeasureResult: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     pizzaMeasuresResult: PropTypes.array.isRequired,
-    onPizzaMeasuresResult: PropTypes.func.isRequired,
-    actPizzaCurrencyResult: PropTypes.string.isRequired,
     pizzaSize: PropTypes.number.isRequired,
     pizzaQuantity: PropTypes.number.isRequired,
     pizzaPrice: PropTypes.number.isRequired,
     pizzaCompareObj: PropTypes.array.isRequired,
+    actPizzaMeasureResult: PropTypes.string.isRequired,
+    actPizzaMeasuresInputs: PropTypes.string.isRequired,
+    actPizzaCurrencyResult: PropTypes.string.isRequired,
+    onPizzaMeasuresResultChange: PropTypes.func.isRequired,
     onPizzaCompareChange: PropTypes.func.isRequired,
 }
 export default PizzaResultNumbers;

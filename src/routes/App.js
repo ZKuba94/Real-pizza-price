@@ -46,24 +46,24 @@ function App() {
         <div className="App">
             <Header/>
             <Inputs
-                pizzas={pizzas}
-                headings={pizzas.map(item => item.value)}
-                setPizzas={setPizzas}
                 measurements={measurements}
                 currencies={currencies}
+                pizzas={pizzas}
+                headings={pizzas.map(item => item.value)}
                 pizzaMeasuresInputs={pizzaMeasuresInputs}
                 pizzaMeasuresResult={pizzaMeasuresResult}
-                setPizzaMeasuresResult={setPizzaMeasuresResult}
-                onPizzaMeasureChange={setPizzaMeasuresInputs}
                 pizzaCurrencyInputs={pizzaCurrencyInputs}
-                onPizzaCurrencyInputs={setPizzaCurrencyInputs}
                 pizzaSizesObj={pizzaSizes}
-                onPizzaSizesChange={setPizzaSizes}
                 pizzaQuantities={pizzaQuantities}
-                onPizzaQuantitiesChange={setQuantitiesChange}
                 pizzaPrices={pizzaPrices}
-                onPizzaPricesChange={setPizzaPrices}
                 pizzaCompare={pizzaCompare}
+                onPizzasChange={setPizzas}
+                onPizzaMeasuresInputsChange={setPizzaMeasuresInputs}
+                onPizzaMeasuresResultChange={setPizzaMeasuresResult}
+                onPizzaCurrencyInputsChange={setPizzaCurrencyInputs}
+                onPizzaSizesChange={setPizzaSizes}
+                onPizzaQuantitiesChange={setQuantitiesChange}
+                onPizzaPricesChange={setPizzaPrices}
                 onPizzaCompareChange={setPizzaCompare}
             />
             <Container
@@ -76,25 +76,25 @@ function App() {
                     className='w-100'/>
             </Container>
             <Results
+                measurements={measurements}
                 pizzas={pizzas}
                 headings={pizzas.map(item => item.value)}
-                setPizzas={setPizzas}
-                measurements={measurements}
-                pizzaMeasuresResult={pizzaMeasuresResult}
                 pizzaMeasuresInputs={pizzaMeasuresInputs}
-                setPizzaMeasuresInputs={setPizzaMeasuresInputs}
-                onPizzaMeasuresResult={setPizzaMeasuresResult}
+                pizzaMeasuresResult={pizzaMeasuresResult}
                 pizzaCurrencyInputs={pizzaCurrencyInputs}
-                setPizzaCurrencyInputs={setPizzaCurrencyInputs}
                 pizzaCurrencyResults={pizzaCurrencyInputs}
                 pizzaSizesObj={pizzaSizes}
                 pizzaQuantities={pizzaQuantities}
-                setQuantitiesChange={setQuantitiesChange}
                 pizzaPrices={pizzaPrices}
-                setPizzaPrices={setPizzaPrices}
                 pizzaCompare={pizzaCompare}
-                onPizzaCompareChange={setPizzaCompare}
+                onPizzasChange={setPizzas}
+                onPizzaMeasuresInputsChange={setPizzaMeasuresInputs}
+                onPizzaMeasuresResultChange={setPizzaMeasuresResult}
+                onPizzaCurrencyInputsChange={setPizzaCurrencyInputs}
                 onPizzaSizesChange={setPizzaSizes}
+                onPizzaQuantitiesChange={setQuantitiesChange}
+                onPizzaPricesChange={setPizzaPrices}
+                onPizzaCompareChange={setPizzaCompare}
             />
             <Container
                 className='my-4'
@@ -108,12 +108,12 @@ function App() {
             </Container>
             <ResultText
                 headings={pizzas.map(item => item.value)}
-                pizzaCompare={pizzaCompare}
-                pizzaPrices={pizzaPrices}
-                pizzaSizes={pizzaSizes}
-                pizzaQuantities={pizzaQuantities}
                 pizzaMeasuresInputs={pizzaMeasuresInputs}
                 pizzaMeasuresResult={pizzaMeasuresResult}
+                pizzaSizes={pizzaSizes}
+                pizzaQuantities={pizzaQuantities}
+                pizzaPrices={pizzaPrices}
+                pizzaCompare={pizzaCompare}
             />
         </div>
     );

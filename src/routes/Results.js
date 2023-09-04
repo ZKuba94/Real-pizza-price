@@ -4,25 +4,25 @@ import AddPizzaButton from "./AddPizzaButton";
 import PropTypes from "prop-types";
 
 function Results({
+                     measurements,
                      pizzas,
                      headings,
-                     measurements,
-                     pizzaMeasuresResult,
                      pizzaMeasuresInputs,
-                     onPizzaMeasuresResult,
+                     pizzaMeasuresResult,
                      pizzaCurrencyInputs,
                      pizzaCurrencyResults,
                      pizzaSizesObj,
                      pizzaQuantities,
                      pizzaPrices,
                      pizzaCompare,
-                     onPizzaCompareChange,
+                     onPizzasChange,
+                     onPizzaMeasuresInputsChange,
+                     onPizzaMeasuresResultChange,
+                     onPizzaCurrencyInputsChange,
                      onPizzaSizesChange,
-                     setPizzaMeasuresInputs,
-                     setPizzaCurrencyInputs,
-                     setQuantitiesChange,
-                     setPizzaPrices,
-                     setPizzas,
+                     onPizzaQuantitiesChange,
+                     onPizzaPricesChange,
+                     onPizzaCompareChange,
                  }) {
     return (
         <Container
@@ -46,17 +46,17 @@ function Results({
                 {headings.map((item, index) => (
                     <Col>
                         <PizzaResultNumbers
-                            index={index}
                             measurements={measurements}
-                            actPizzaMeasureResult={pizzaMeasuresResult[index].value}
+                            index={index}
                             pizzaMeasuresResult={pizzaMeasuresResult}
-                            actPizzaMeasuresInputs={pizzaMeasuresInputs[index].value}
-                            onPizzaMeasuresResult={onPizzaMeasuresResult}
-                            actPizzaCurrencyResult={pizzaCurrencyResults[index].value}
                             pizzaSize={pizzaSizesObj[index].value}
                             pizzaQuantity={pizzaQuantities[index].value}
                             pizzaPrice={pizzaPrices[index].value}
                             pizzaCompareObj={pizzaCompare}
+                            actPizzaMeasureResult={pizzaMeasuresResult[index].value}
+                            actPizzaMeasuresInputs={pizzaMeasuresInputs[index].value}
+                            actPizzaCurrencyResult={pizzaCurrencyResults[index].value}
+                            onPizzaMeasuresResultChange={onPizzaMeasuresResultChange}
                             onPizzaCompareChange={onPizzaCompareChange}
                         />
                     </Col>
@@ -75,14 +75,14 @@ function Results({
                         pizzaQuantities={pizzaQuantities}
                         pizzaPrices={pizzaPrices}
                         pizzaCompare={pizzaCompare}
-                        setPizzaSizes={onPizzaSizesChange}
-                        setPizzaMeasuresInputs={setPizzaMeasuresInputs}
-                        setPizzaMeasuresResult={onPizzaMeasuresResult}
-                        setPizzaCurrencyInputs={setPizzaCurrencyInputs}
-                        setQuantitiesChange={setQuantitiesChange}
-                        setPizzaPrices={setPizzaPrices}
-                        setPizzaCompare={onPizzaCompareChange}
-                        setPizzas={setPizzas}
+                        onPizzasChange={onPizzasChange}
+                        onPizzaMeasuresInputsChange={onPizzaMeasuresInputsChange}
+                        onPizzaMeasuresResultChange={onPizzaMeasuresResultChange}
+                        onPizzaCurrencyInputsChange={onPizzaCurrencyInputsChange}
+                        onPizzaSizesChange={onPizzaSizesChange}
+                        onPizzaQuantitiesChange={onPizzaQuantitiesChange}
+                        onPizzaPricesChange={onPizzaPricesChange}
+                        onPizzaCompareChange={onPizzaCompareChange}
                     />
                 </Col>
             </Row>
@@ -91,15 +91,24 @@ function Results({
 }
 
 Results.propTypes = {
-    headings: PropTypes.array.isRequired,
     measurements: PropTypes.array.isRequired,
+    pizzas: PropTypes.array.isRequired,
+    headings: PropTypes.array.isRequired,
+    pizzaMeasuresInputs: PropTypes.array.isRequired,
     pizzaMeasuresResult: PropTypes.array.isRequired,
-    onPizzaMeasuresResult: PropTypes.func.isRequired,
+    pizzaCurrencyInputs: PropTypes.array.isRequired,
     pizzaCurrencyResults: PropTypes.array.isRequired,
     pizzaSizesObj: PropTypes.array.isRequired,
     pizzaQuantities: PropTypes.array.isRequired,
     pizzaPrices: PropTypes.array.isRequired,
     pizzaCompare: PropTypes.array.isRequired,
+    onPizzasChange: PropTypes.func.isRequired,
+    onPizzaMeasuresInputsChange: PropTypes.func.isRequired,
+    onPizzaMeasuresResultChange: PropTypes.func.isRequired,
+    onPizzaCurrencyInputsChange: PropTypes.func.isRequired,
+    onPizzaSizesChange: PropTypes.func.isRequired,
+    onPizzaQuantitiesChange: PropTypes.func.isRequired,
+    onPizzaPricesChange: PropTypes.func.isRequired,
     onPizzaCompareChange: PropTypes.func.isRequired,
 }
 

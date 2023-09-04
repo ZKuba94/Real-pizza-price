@@ -4,31 +4,31 @@ import PropTypes from "prop-types";
 import ClosureButton from "./ClosureButton";
 
 function PizzaToCompare({
+                            measurements,
+                            currencies,
                             pizzas,
                             id,
                             heading,
-                            measurements,
-                            currencies,
-                            actPizzaMeasuresInputs,
                             pizzaMeasuresInputs,
-                            onPizzaMeasureChange,
+                            pizzaMeasuresResult,
                             pizzaCurrencyInputs,
-                            onPizzaCurrencyInputs,
-                            actPizzaCurrencyInputs,
                             pizzaSizesObj,
                             pizzaSize,
-                            onPizzaSizesChange,
                             pizzaQuantitiesObj,
                             pizzaQuantities,
-                            onPizzaQuantitiesChange,
+                            pizzaPricesObj,
                             pizzaPrice,
-                            pizzaPrices,
-                            onPizzaPricesChange,
-                            setPizzas,
                             pizzaCompare,
+                            actPizzaMeasuresInputs,
+                            actPizzaCurrencyInputs,
+                            onPizzasChange,
+                            onPizzaMeasuresInputsChange,
+                            onPizzaMeasuresResultChange,
+                            onPizzaCurrencyInputs,
+                            onPizzaSizesChange,
+                            onPizzaQuantitiesChange,
+                            onPizzaPricesChange,
                             onPizzaCompareChange,
-                            pizzaMeasuresResult,
-                            setPizzaMeasuresResult,
                         }) {
     const measurements2 = measurements.map(measure =>
         <option key={measure} value={measure}>{measure}</option>
@@ -68,23 +68,23 @@ function PizzaToCompare({
                             className={pizzas.length < 3 ? 'd-none' : 'd-block text-end justify-content-top'}
                         >
                             <ClosureButton
-                                id={id}
                                 pizzas={pizzas}
-                                setPizzas={setPizzas}
+                                id={id}
                                 pizzaMeasuresInputs={pizzaMeasuresInputs}
-                                setPizzaMeasuresInputs={onPizzaMeasureChange}
                                 pizzaMeasuresResult={pizzaMeasuresResult}
-                                setPizzaMeasuresResult={setPizzaMeasuresResult}
                                 pizzaCurrencyInputs={pizzaCurrencyInputs}
-                                setPizzaCurrencyInputs={onPizzaCurrencyInputs}
                                 pizzaSizes={pizzaSizesObj}
-                                setPizzaSizes={onPizzaSizesChange}
                                 pizzaQuantities={pizzaQuantitiesObj}
-                                setQuantitiesChange={onPizzaQuantitiesChange}
-                                pizzaPrices={pizzaPrices}
-                                setPizzaPrices={onPizzaPricesChange}
+                                pizzaPrices={pizzaPricesObj}
                                 pizzaCompare={pizzaCompare}
-                                setPizzaCompare={onPizzaCompareChange}
+                                onPizzasChange={onPizzasChange}
+                                onPizzaMeasuresInputsChange={onPizzaMeasuresInputsChange}
+                                onPizzaMeasuresResultChange={onPizzaMeasuresResultChange}
+                                onPizzaCurrencyInputs={onPizzaCurrencyInputs}
+                                onPizzaSizesChange={onPizzaSizesChange}
+                                onPizzaQuantitiesChange={onPizzaQuantitiesChange}
+                                onPizzaPricesChange={onPizzaPricesChange}
+                                onPizzaCompareChange={onPizzaCompareChange}
                             />
                         </Col>
                     </div>
@@ -108,7 +108,7 @@ function PizzaToCompare({
                                         name='measure'
                                         value={actPizzaMeasuresInputs}
                                         onChange={
-                                            handleInputsChangesStrings(id, pizzaMeasuresInputs, onPizzaMeasureChange)
+                                            handleInputsChangesStrings(id, pizzaMeasuresInputs, onPizzaMeasuresInputsChange)
                                         }
                                     >
                                         {measurements2}
@@ -142,7 +142,7 @@ function PizzaToCompare({
                                         type='number'
                                         value={pizzaPrice}
                                         onChange={
-                                            handleInputsChangesNumbers(id, pizzaPrices, onPizzaPricesChange)
+                                            handleInputsChangesNumbers(id, pizzaPricesObj, onPizzaPricesChange)
                                         }
                                     />
                                 </Col>
@@ -167,24 +167,30 @@ function PizzaToCompare({
 }
 
 PizzaToCompare.propTypes = {
-    id: PropTypes.number.isRequired,
-    heading: PropTypes.string.isRequired,
     measurements: PropTypes.array.isRequired,
     currencies: PropTypes.array.isRequired,
-    actPizzaMeasuresInputs: PropTypes.string.isRequired,
+    pizzas: PropTypes.array.isRequired,
+    id: PropTypes.number.isRequired,
+    heading: PropTypes.string.isRequired,
     pizzaMeasuresInputs: PropTypes.array.isRequired,
-    onPizzaMeasureChange: PropTypes.func.isRequired,
+    pizzaMeasuresResult: PropTypes.array.isRequired,
     pizzaCurrencyInputs: PropTypes.array.isRequired,
-    onPizzaCurrencyInputs: PropTypes.func.isRequired,
-    actPizzaCurrencyInputs: PropTypes.string.isRequired,
     pizzaSizesObj: PropTypes.array.isRequired,
     pizzaSize: PropTypes.number.isRequired,
-    onPizzaSizesChange: PropTypes.func.isRequired,
     pizzaQuantitiesObj: PropTypes.array.isRequired,
     pizzaQuantities: PropTypes.number.isRequired,
-    onPizzaQuantitiesChange: PropTypes.func.isRequired,
+    pizzaPricesObj: PropTypes.array.isRequired,
     pizzaPrice: PropTypes.number.isRequired,
-    pizzaPrices: PropTypes.array.isRequired,
+    pizzaCompare: PropTypes.array.isRequired,
+    actPizzaMeasuresInputs: PropTypes.string.isRequired,
+    actPizzaCurrencyInputs: PropTypes.string.isRequired,
+    onPizzasChange: PropTypes.func.isRequired,
+    onPizzaMeasuresInputsChange: PropTypes.func.isRequired,
+    onPizzaMeasuresResultChange: PropTypes.func.isRequired,
+    onPizzaCurrencyInputs: PropTypes.func.isRequired,
+    onPizzaSizesChange: PropTypes.func.isRequired,
+    onPizzaQuantitiesChange: PropTypes.func.isRequired,
     onPizzaPricesChange: PropTypes.func.isRequired,
+    onPizzaCompareChange: PropTypes.func.isRequired,
 }
 export default PizzaToCompare;

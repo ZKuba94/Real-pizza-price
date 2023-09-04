@@ -1,29 +1,28 @@
 import {Col, Container, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import PizzaToCompare from "./PizzaToCompare"
 import PropTypes from "prop-types";
-
 import AddPizzaButton from "./AddPizzaButton"
 
 function Inputs({
-                    pizzas,
-                    headings,
                     measurements,
                     currencies,
+                    pizzas,
+                    headings,
                     pizzaMeasuresInputs,
                     pizzaMeasuresResult,
-                    onPizzaMeasureChange,
                     pizzaCurrencyInputs,
-                    onPizzaCurrencyInputs,
                     pizzaSizesObj,
-                    onPizzaSizesChange,
                     pizzaQuantities,
-                    onPizzaQuantitiesChange,
                     pizzaPrices,
-                    onPizzaPricesChange,
                     pizzaCompare,
+                    onPizzasChange,
+                    onPizzaMeasuresInputsChange,
+                    onPizzaMeasuresResultChange,
+                    onPizzaCurrencyInputsChange,
+                    onPizzaSizesChange,
+                    onPizzaQuantitiesChange,
+                    onPizzaPricesChange,
                     onPizzaCompareChange,
-                    setPizzaMeasuresResult,
-                    setPizzas,
                 }) {
     return (
         <Container
@@ -47,36 +46,36 @@ function Inputs({
                 {headings.map((item, index) => (
                     <Col>
                         <PizzaToCompare
+                            measurements={measurements}
+                            currencies={currencies}
                             pizzas={pizzas}
                             id={index}
                             heading={item}
+                            pizzaMeasuresInputs={pizzaMeasuresInputs}
+                            pizzaMeasuresResult={pizzaMeasuresResult}
+                            pizzaCurrencyInputs={pizzaCurrencyInputs}
                             pizzaSizesObj={pizzaSizesObj}
                             pizzaSize={pizzaSizesObj[index].value}
-                            onPizzaSizesChange={onPizzaSizesChange}
                             pizzaQuantitiesObj={pizzaQuantities}
                             pizzaQuantities={pizzaQuantities[index].value}
-                            onPizzaQuantitiesChange={onPizzaQuantitiesChange}
-                            measurements={measurements}
-                            currencies={currencies}
-                            actPizzaMeasuresInputs={pizzaMeasuresInputs[index].value}
-                            pizzaMeasuresInputs={pizzaMeasuresInputs}
-                            onPizzaMeasureChange={onPizzaMeasureChange}
-                            pizzaCurrencyInputs={pizzaCurrencyInputs}
-                            actPizzaCurrencyInputs={pizzaCurrencyInputs[index].value}
-                            onPizzaCurrencyInputs={onPizzaCurrencyInputs}
+                            pizzaPricesObj={pizzaPrices}
                             pizzaPrice={pizzaPrices[index].value}
-                            pizzaPrices={pizzaPrices}
-                            onPizzaPricesChange={onPizzaPricesChange}
                             pizzaCompare={pizzaCompare}
+                            actPizzaMeasuresInputs={pizzaMeasuresInputs[index].value}
+                            actPizzaCurrencyInputs={pizzaCurrencyInputs[index].value}
+                            onPizzasChange={onPizzasChange}
+                            onPizzaMeasuresInputsChange={onPizzaMeasuresInputsChange}
+                            onPizzaMeasuresResultChange={onPizzaMeasuresResultChange}
+                            onPizzaCurrencyInputs={onPizzaCurrencyInputsChange}
+                            onPizzaSizesChange={onPizzaSizesChange}
+                            onPizzaQuantitiesChange={onPizzaQuantitiesChange}
+                            onPizzaPricesChange={onPizzaPricesChange}
                             onPizzaCompareChange={onPizzaCompareChange}
-                            setPizzas={setPizzas}
-                            pizzaMeasuresResult={pizzaMeasuresResult}
-                            setPizzaMeasuresResult={setPizzaMeasuresResult}
                         />
                     </Col>
                 ))}
                 <Col
-                    className={headings.length === 4 ?'d-none' :'d-block'}
+                    className={headings.length === 4 ? 'd-none' : 'd-block'}
                 >
                     <AddPizzaButton
                         pizzas={pizzas}
@@ -88,14 +87,14 @@ function Inputs({
                         pizzaQuantities={pizzaQuantities}
                         pizzaPrices={pizzaPrices}
                         pizzaCompare={pizzaCompare}
-                        setPizzaSizes={onPizzaSizesChange}
-                        setPizzaMeasuresInputs={onPizzaMeasureChange}
-                        setPizzaMeasuresResult={setPizzaMeasuresResult}
-                        setPizzaCurrencyInputs={onPizzaCurrencyInputs}
-                        setQuantitiesChange={onPizzaQuantitiesChange}
-                        setPizzaPrices={onPizzaPricesChange}
-                        setPizzaCompare={onPizzaCompareChange}
-                        setPizzas={setPizzas}
+                        onPizzasChange={onPizzasChange}
+                        onPizzaMeasuresInputsChange={onPizzaMeasuresInputsChange}
+                        onPizzaMeasuresResultChange={onPizzaMeasuresResultChange}
+                        onPizzaCurrencyInputsChange={onPizzaCurrencyInputsChange}
+                        onPizzaSizesChange={onPizzaSizesChange}
+                        onPizzaQuantitiesChange={onPizzaQuantitiesChange}
+                        onPizzaPricesChange={onPizzaPricesChange}
+                        onPizzaCompareChange={onPizzaCompareChange}
                     />
                 </Col>
             </Row>
@@ -104,20 +103,24 @@ function Inputs({
 }
 
 Inputs.propTypes = {
-    headings: PropTypes.array.isRequired,
     measurements: PropTypes.array.isRequired,
     currencies: PropTypes.array.isRequired,
+    pizzas: PropTypes.array.isRequired,
+    headings: PropTypes.array.isRequired,
     pizzaMeasuresInputs: PropTypes.array.isRequired,
-    onPizzaMeasureChange: PropTypes.func.isRequired,
+    pizzaMeasuresResult: PropTypes.array.isRequired,
     pizzaCurrencyInputs: PropTypes.array.isRequired,
-    onPizzaCurrencyInputs: PropTypes.func.isRequired,
     pizzaSizesObj: PropTypes.array.isRequired,
-    onPizzaSizesChange: PropTypes.func.isRequired,
     pizzaQuantities: PropTypes.array.isRequired,
-    onPizzaQuantitiesChange: PropTypes.func.isRequired,
     pizzaPrices: PropTypes.array.isRequired,
-    onPizzaPricesChange: PropTypes.func.isRequired,
     pizzaCompare: PropTypes.array.isRequired,
+    onPizzasChange: PropTypes.func.isRequired,
+    onPizzaMeasuresInputsChange: PropTypes.func.isRequired,
+    onPizzaMeasuresResultChange: PropTypes.func.isRequired,
+    onPizzaCurrencyInputsChange: PropTypes.func.isRequired,
+    onPizzaSizesChange: PropTypes.func.isRequired,
+    onPizzaQuantitiesChange: PropTypes.func.isRequired,
+    onPizzaPricesChange: PropTypes.func.isRequired,
     onPizzaCompareChange: PropTypes.func.isRequired,
 }
 export default Inputs;

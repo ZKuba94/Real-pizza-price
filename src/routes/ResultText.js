@@ -5,12 +5,12 @@ import connections from "./MeasuresObject";
 
 function ResultText({
                         headings,
-                        pizzaCompare,
-                        pizzaPrices,
-                        pizzaSizes,
-                        pizzaQuantities,
                         pizzaMeasuresInputs,
                         pizzaMeasuresResult,
+                        pizzaSizes,
+                        pizzaQuantities,
+                        pizzaPrices,
+                        pizzaCompare,
                     }) {
     let inputPizzaMeasures = pizzaMeasuresInputs.map(el => (connections.find(mes => mes.measure === el.value)).values)
     let pizzaSizesInCmResults = pizzaMeasuresResult.map(el => (connections[4].values).find(mes => mes.measure === el.value))
@@ -19,7 +19,6 @@ function ResultText({
     //     id:pizzaCompare[index].id,
     // }))
     let betterOptionValues = pizzaCompare.map(el => el.value * pizzaSizesInCmResults[el.id].value)
-    // console.log(betterOptionValues)
     let betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
     const realPizzaSizeFactorInputs = pizzaMeasuresResult.map(el => (inputPizzaMeasures[el.id]).find(mes => mes.measure === el.value))
 
@@ -76,10 +75,12 @@ function ResultText({
 
 ResultText.propTypes = {
     headings: PropTypes.array.isRequired,
-    pizzaCompare: PropTypes.array.isRequired,
-    pizzaPrices: PropTypes.array.isRequired,
+    pizzaMeasuresInputs: PropTypes.array.isRequired,
+    pizzaMeasuresResult: PropTypes.array.isRequired,
     pizzaSizes: PropTypes.array.isRequired,
     pizzaQuantities: PropTypes.array.isRequired,
+    pizzaPrices: PropTypes.array.isRequired,
+    pizzaCompare: PropTypes.array.isRequired,
 }
 
 export default ResultText;
