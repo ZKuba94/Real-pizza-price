@@ -13,32 +13,33 @@ function ResultText({
                         pizzaCompare,
                     }) {
     let inputPizzaMeasures = pizzaMeasuresInputs.map(el => (connections.find(mes => mes.measure === el.value)).values)
-    let pizzaSizesInCmResults = pizzaMeasuresResult.map(el => (connections[4].values).find(mes => mes.measure === el.value))
-    // let pizzaSizesInCmResults = pizzaSizesInCm.map((item,index)=>({
+    let pizzaSizesInCmResultsFactor = pizzaMeasuresResult.map(el => (connections[4].values).find(mes => mes.measure === el.value))
+    // let pizzaSizesInCmResults2 = pizzaSizesInCmResults.map((item,index)=>({
     //     ...item,
     //     id:pizzaCompare[index].id,
     // }))
-    let betterOptionValues = pizzaCompare.map(el => el.value * pizzaSizesInCmResults[el.id].value)
+    let betterOptionValues = pizzaCompare.map((el, index) => el.value * pizzaSizesInCmResultsFactor[index].value)
     let betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
-    const realPizzaSizeFactorInputs = pizzaMeasuresResult.map(el => (inputPizzaMeasures[el.id]).find(mes => mes.measure === el.value))
-
+    const realPizzaSizeFactorInputs = pizzaMeasuresResult.map((el,index) => (inputPizzaMeasures[index]).find(mes => mes.measure === 'cm'))
     const percentageValue = () => {
-        betterOptionValues = pizzaCompare.map(el => el.value * pizzaSizesInCmResults[el.id].value)
+        let counter = 1
+        betterOptionValues = pizzaCompare.map((el, index) => el.value * pizzaSizesInCmResultsFactor[index].value)
         betterOption = betterOptionValues.findIndex(el => el === Math.min(...betterOptionValues))
         let message = ''
         let betterPizzas = [headings[betterOption]]
-        const pizzaAreas = pizzaCompare.map(el => (
-            ((Math.PI * (((pizzaSizes[el.id].value * realPizzaSizeFactorInputs[el.id].value) / 2) ** 2))
-                .toFixed(2)) * pizzaQuantities[el.id].value))
-        const totalCosts = pizzaCompare.map(el => (
-            Math.max(...pizzaAreas) * betterOptionValues[el.id]
+        const pizzaAreas = pizzaCompare.map((el, index) => (
+            ((Math.PI * (((pizzaSizes[index].value * realPizzaSizeFactorInputs[index].value) / 2) ** 2))
+                .toFixed(2)) * pizzaQuantities[index].value))
+        const totalCosts = pizzaCompare.map((el, index) => (
+            Math.max(...pizzaAreas) * betterOptionValues[index]
         ))
         const trimValues = (values, valueOption) => {
             const secondOptionValues = values.slice()
             secondOptionValues.splice(valueOption, 1)
             const secondOption = secondOptionValues.findIndex(el => el === Math.min(...secondOptionValues))
             if (secondOptionValues[secondOption] === values[valueOption] && secondOptionValues.length >= 1) {
-                betterPizzas.push(headings[secondOption < valueOption ? secondOption : secondOption + 1])
+                betterPizzas.push(headings[secondOption < valueOption ? secondOption : secondOption + counter])
+                counter++
                 trimValues(secondOptionValues, secondOption)
             } else if (secondOptionValues[secondOption] !== values[valueOption]) {
                 const percentage = (((totalCosts[betterOptionValues.findIndex(el => el === secondOptionValues[secondOption])]

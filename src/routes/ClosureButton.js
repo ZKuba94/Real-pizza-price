@@ -40,7 +40,7 @@ function ClosureButton({
         >
             <Button
                 className='closeBtn'
-                variant='secondary'
+                variant='danger'
                 onClick={handleClosure}
             >
                 X
