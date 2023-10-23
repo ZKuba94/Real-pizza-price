@@ -1,5 +1,4 @@
 const Result = (pizzas) => {
-    let message =''
     const pizzasMap = pizzas.pizzas
     const pizzaAreas = Array.from(pizzasMap.entries())
         .map(([key, object]) => {
@@ -18,43 +17,30 @@ const Result = (pizzas) => {
     let bestValue = Infinity
     let secondOption = null
     let secondValue = Infinity
-    const resultPercentage = (calculationsMap) => {
-        calculationsMap.forEach((obj,key)=>{
+    const calculationsSecond = (calculationsBest) => {
+        calculationsBest.forEach((obj,key)=>{
             if (obj.pricePerArea<secondValue) {
                 secondValue = obj.pricePerArea
                 secondOption = [key, obj]
             }
         })
     }
-    const calculationsMap = new Map(costsCalculations)
-    calculationsMap.forEach((obj,key)=> {
+    const calculationsBest = new Map(costsCalculations)
+    calculationsBest.forEach((obj,key)=> {
         if (obj.pricePerArea<bestValue) {
             bestValue = obj.pricePerArea
             bestOption = [key, obj]
         }
     })
-    calculationsMap.delete(bestOption[0])
-    resultPercentage(calculationsMap)
-    // const resultPercentage = (pricesPerArea, bestOption) => {
-    //     const pricesPerAreaUpdated = pricesPerArea.slice()
-    //     pricesPerAreaUpdated.splice(pricesPerAreaUpdated.findIndex(el=>el===Math.min(...pricesPerArea)),1)
-    //     const secondOption = Math.min(...pricesPerAreaUpdated)
-    //     return message = `
-    //     Best option is pizza ${pricesPerArea.findIndex(el => el === Math.min(...pricesPerArea)) + 1}
-    //     `
-    // }
-    //
-    // if (costsCalculations.every((el,key)=> el. === )) {
-    //     return message = 'Each pizza is equally profitable!'
-    // } else {
-    //     resultPercentage(costsCalculations,Math.min(...pricesPerArea))
-    // }
-
-    const messageText = (secondOption[1].totalCost / bestOption[1].totalCost - 1).toFixed(2) * 100
-
+    calculationsBest.delete(bestOption[0])
+    calculationsSecond(calculationsBest)
+    const percentageValue = ((secondOption[1].totalCost / bestOption[1].totalCost - 1) * 100).toFixed(2)
+    const message = !(bestValue===secondValue)?`More profitable is Pizza ${bestOption[0]}, 
+    than the second option by ${percentageValue}% considering whole area of pizza.`
+        :`Pizza ${bestOption[0]} is equally profitable than second option considering whole area of pizza.`
     return (
         <>
-            {messageText}%
+            {message}
         </>
     )
 }
