@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Result = (pizzas) => {
     const pizzasMap = pizzas.pizzas
     const pizzaAreas = Array.from(pizzasMap.entries())
@@ -43,5 +45,8 @@ const Result = (pizzas) => {
             {message}
         </>
     )
+}
+Result.protoTypes = {
+    pizzas: PropTypes.object.isRequired,
 }
 export default Result;

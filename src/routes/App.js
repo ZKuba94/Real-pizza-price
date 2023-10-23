@@ -9,20 +9,6 @@ import {Button, Container, Row} from "react-bootstrap";
 const measurements = ['cm', 'm', 'in', 'ft'];
 const currencies = ['PLN', 'USD', 'EUR'];
 
-// const curSet = new Set(currencies);
-// curSet.add('AUD');
-// curSet.add('PLN');
-// curSet.has('AUD');
-// curSet.delete('AUD')
-// curSet.has('AUD');
-// Array.from(curSet.values());
-//
-// Array.from(initialPizzasMap.entries())
-//     .map((entry) => {
-//         // [
-//         const [key, {size, quantity, price}] = entry;
-//         return `label: ${key}, price: ${price}`
-//     })
 const initialPizzasMap = new Map([
     [
         1, {price: 45, quantity: 1, size: 45} // [key, value(object mostly)]
@@ -85,5 +71,4 @@ function App() {
             </Container>
         </div>);
 }
-
 export default App;

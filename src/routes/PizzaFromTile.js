@@ -1,4 +1,5 @@
-import {Button, InputGroup, Form, Col, Row} from "react-bootstrap";
+import {Button, InputGroup, Form, Col} from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, remove}) => {
     const {size, price, quantity} = values
@@ -48,38 +49,19 @@ const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, re
                     />
                     <InputGroup.Text id="price">{currency}</InputGroup.Text>
                 </InputGroup>
-                {/*<br/>*/}
-                {/*<input*/}
-                {/*    value={size}*/}
-                {/*    type='number'*/}
-                {/*    onChange={(e) => {*/}
-                {/*        update({...values, size: parseFloat(e.target.value)})*/}
-                {/*    }}*/}
-                {/*/>*/}
-                {/*{measurement}*/}
-                {/*<br/>*/}
-                {/*<input*/}
-                {/*    value={quantity}*/}
-                {/*    type="number"*/}
-                {/*    onChange={(e) => {*/}
-                {/*        update({...values, quantity: parseFloat(e.target.value)})*/}
-                {/*    }}*/}
-                {/*/>*/}
-                {/*<br/>*/}
-                {/*<input*/}
-                {/*    value={price}*/}
-                {/*    type="number"*/}
-                {/*    onChange={(e) => {*/}
-                {/*        update({...values, price: parseFloat(e.target.value)})*/}
-                {/*    }}*/}
-                {/*/>*/}
-                {/*{currency}*/}
-                {/*</label>*/}
-                {/*<br/>*/}
                 <p className='mb-0'>Price: {pricePerArea()} {currency}/{measurement}<sup>2</sup></p>
             </div>
         </Col>
     );
 };
 
+PizzaFormTile.propTypes = {
+    pizzas: PropTypes.object.isRequired,
+    label: PropTypes.string.isRequired,
+    values: PropTypes.object.isRequired,
+    measurement: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
+    update: PropTypes.func.isRequired,
+    remove: PropTypes.func.isRequired,
+}
 export default PizzaFormTile;
