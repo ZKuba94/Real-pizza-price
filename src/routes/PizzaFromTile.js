@@ -1,4 +1,4 @@
-import {Button, InputGroup, Form, Col} from "react-bootstrap";
+import {Button, InputGroup, Form, Col, Badge} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, remove}) => {
@@ -9,9 +9,9 @@ const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, re
     return (
         <Col xs={10} sm={5} className='border border-secondary'>
             <div>
-                <label className='d-flex justify-content-between'>
-                    <p>Pizza {label}</p>
-                    {pizzas.size > 2 ? <Button variant='danger' onClick={remove} className='my-2'>-</Button> : ''}
+                <label className='d-flex py-1 justify-content-between'>
+                    <span><Badge bg='secondary'>Pizza {label}</Badge></span>
+                    {pizzas.size > 2 ? <Button variant='danger' onClick={remove}>-</Button> : ''}
                 </label>
                 <InputGroup size="md" className='mb-1'>
                     <Form.Control
@@ -57,7 +57,7 @@ const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, re
 
 PizzaFormTile.propTypes = {
     pizzas: PropTypes.object.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.number.isRequired,
     values: PropTypes.object.isRequired,
     measurement: PropTypes.string.isRequired,
     currency: PropTypes.string.isRequired,

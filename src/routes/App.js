@@ -61,7 +61,7 @@ function App() {
                             ))
                     }
                 </Row>
-                <Row className='d-flex justify-content-center'>
+                <Row className='d-flex justify-content-center pb-3'>
                     <Button variant='success' onClick={addPizza} className='my-3' style={{width: "fit-content"}}>Add pizza +</Button>
                     <hr/>
                     <Result
