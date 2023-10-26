@@ -4,14 +4,17 @@ import PropTypes from "prop-types";
 const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, remove}) => {
     const {size, price, quantity} = values
     const pricePerArea = () => {
-        return (price / (((Math.PI * (size / 2) ** 2) * quantity))).toFixed(4)
+        return (!Number.isNaN(size) && !Number.isNaN(quantity) && !Number.isNaN(price))
+            ? (price / (((Math.PI * (size / 2) ** 2) * quantity))).toFixed(4)
+            : ''
     }
+    const sup2 = <sup>2</sup>
     return (
         <Col xs={10} sm={5} className='border border-secondary'>
             <div>
                 <label className='d-flex py-1 justify-content-between'>
                     <span><Badge bg='secondary'>Pizza {label}</Badge></span>
-                    {pizzas.size > 2 ? <Button variant='danger' onClick={remove}>-</Button> : ''}
+                    {pizzas.size > 2 ? <Button variant='danger' onClick={remove}>X</Button> : ''}
                 </label>
                 <InputGroup size="md" className='mb-1'>
                     <Form.Control
@@ -49,7 +52,9 @@ const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, re
                     />
                     <InputGroup.Text id="price">{currency}</InputGroup.Text>
                 </InputGroup>
-                <p className='mb-0'>Price: {pricePerArea()} {currency}/{measurement}<sup>2</sup></p>
+                <p className='mb-0'>Price: {pricePerArea()}
+                    {pricePerArea() === '' ? `` : <span> {currency}/{measurement}<sup>2</sup></span>}
+                </p>
             </div>
         </Col>
     );
