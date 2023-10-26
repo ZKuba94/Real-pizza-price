@@ -8,7 +8,6 @@ const Result = (pizzas) => {
                 ?Math.PI * (((object.size) / 2) ** 2) * object.quantity
                 :0
         })
-    console.log(Math.max(...pizzaAreas))
     const costsCalculations = Array.from(pizzasMap.entries())
         .map(([key, object]) => {
             return [key, {
@@ -40,11 +39,7 @@ const Result = (pizzas) => {
     })
     calculationsBest.delete(bestOption[0])
     calculationsSecond(calculationsBest)
-    console.log(secondValue)
-    console.log(bestValue)
-    console.log(secondOption)
-    console.log(bestOption)
-    if (secondValue !== Infinity && secondValue !== NaN) {
+    if (secondValue !== Infinity) {
         const percentageValue = ((secondOption[1].totalCost / bestOption[1].totalCost - 1) * 100).toFixed(2)
         message = !(bestValue === secondValue) ? `More profitable is Pizza ${bestOption[0]}, 
     than the second option by ${percentageValue}% considering whole area of pizza.`
