@@ -19,6 +19,7 @@ const Result = (pizzas) => {
     let bestValue = Infinity
     let secondOption = null
     let secondValue = Infinity
+    let message
     const calculationsSecond = (calculationsBest) => {
         calculationsBest.forEach((obj, key) => {
             if (obj.pricePerArea < secondValue) {
@@ -36,10 +37,12 @@ const Result = (pizzas) => {
     })
     calculationsBest.delete(bestOption[0])
     calculationsSecond(calculationsBest)
-    const percentageValue = ((secondOption[1].totalCost / bestOption[1].totalCost - 1) * 100).toFixed(2)
-    const message = !(bestValue === secondValue) ? `More profitable is Pizza ${bestOption[0]}, 
+    if (secondValue !== Infinity) {
+        const percentageValue = ((secondOption[1].totalCost / bestOption[1].totalCost - 1) * 100).toFixed(2)
+        message = !(bestValue === secondValue) ? `More profitable is Pizza ${bestOption[0]}, 
     than the second option by ${percentageValue}% considering whole area of pizza.`
-        : `Pizza ${bestOption[0]} is equally profitable than second option considering whole area of pizza.`
+            : `Pizza ${bestOption[0]} is equally profitable than second option considering whole area of pizza.`
+    } else return message = 'Please insert pizza parameters.'
     return (
         <>
             {message}
