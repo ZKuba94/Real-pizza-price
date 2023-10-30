@@ -8,12 +8,15 @@ const PizzaFormTile = ({pizzas, label, values, measurement, currency, update, re
             ? (price / (((Math.PI * (size / 2) ** 2) * quantity))).toFixed(4)
             : ''
     }
-    const sup2 = <sup>2</sup>
     return (
         <Col xs={10} sm={5} className='border border-secondary'>
             <div>
                 <label className='d-flex py-1 justify-content-between'>
-                    <span><Badge bg='secondary'>Pizza {label}</Badge></span>
+                    <span>
+                        <Badge bg='secondary'>
+                            Pizza {label}
+                        </Badge>
+                    </span>
                     {pizzas.size > 2 ? <Button variant='danger' onClick={remove}>X</Button> : ''}
                 </label>
                 <InputGroup size="md" className='mb-1'>

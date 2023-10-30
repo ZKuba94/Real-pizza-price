@@ -46,9 +46,9 @@ const Result = (pizzas) => {
             : `Pizza ${bestOption[0]} is equally profitable than second option considering whole area of pizza.`
     } else return message = 'Please insert pizza parameters.'
     return (
-        <>
+        <span>
             {message}
-        </>
+        </span>
     )
 }
 Result.protoTypes = {

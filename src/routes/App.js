@@ -6,12 +6,12 @@ import Result from "./Result"
 import {useState} from "react";
 import {Button, Container, Row} from "react-bootstrap";
 
-const measurements = ['cm', 'm', 'in', 'ft'];
-const currencies = ['PLN', 'USD', 'EUR'];
+const measurements = ['cm'];
+const currencies = ['PLN'];
 
 const initialPizzasMap = new Map([
     [
-        1, {price: 45, quantity: 1, size: 45} // [key, value(object mostly)]
+        1, {price: 45, quantity: 1, size: 45}
     ],
     [
         2, {price: 30, quantity: 2, size: 30}
@@ -62,7 +62,14 @@ function App() {
                     }
                 </Row>
                 <Row className='d-flex justify-content-center pb-3'>
-                    <Button variant='success' onClick={addPizza} className='my-3' style={{width: "fit-content"}}>Add pizza +</Button>
+                    <Button
+                        variant='success'
+                        onClick={addPizza}
+                        className='my-3'
+                        style={{width: "fit-content"}}
+                    >
+                        Add pizza +
+                    </Button>
                     <hr/>
                     <Result
                         pizzas={pizzas}
